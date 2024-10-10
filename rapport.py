@@ -56,7 +56,7 @@ st.title("RECAPITULATIF DE LA COLLECTE")
 col100, col101 = st.columns([2.5 , 1.75])
 
 with col100:
-    st.image("/mnt/c/Users/noura/Downloads/WhatsApp Image 2024-09-20 at 19.44.52.jpeg", width=800)
+    st.image("https://github.com/nouramaiga1/rapportins/raw/main/WhatsApp%20Image%202024-09-20%20at%2019.44.52.jpeg", width=800)
 
 with col101:
     st.write(" ")
@@ -991,7 +991,7 @@ category_counts = data_filtree["tranche_age"].value_counts()
 col111, col55 = st.columns([1.5 ,2])
 
 with col111:
-    st.image("/mnt/c/Users/noura/Downloads/WhatsApp Image 2024-10-10 at 10.45.14.jpeg", width=500)
+    st.image("https://github.com/nouramaiga1/rapportins/raw/main/WhatsApp%20Image%202024-10-10%20at%2010.45.14.jpeg", width=400)
 
 
 fig11 = px.pie(

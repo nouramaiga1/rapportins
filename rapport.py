@@ -173,7 +173,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-file_path1 = "/mnt/c/Users/noura/Downloads/tabb.xlsx"
+file_path1 = "https://github.com/nouramaiga1/Photos-rapport/raw/refs/heads/main/tabb.xlsx"
 sheet_name1 = "Sheet1"
 data1 = pd.read_excel(file_path1, sheet_name=sheet_name1)
 
@@ -252,7 +252,7 @@ with col011:
     )
     st.write(commentaire)
 
-file_path2 = "/mnt/c/Users/noura/Downloads/takeit.xlsx"
+file_path2 = "https://github.com/nouramaiga1/Photos-rapport/raw/refs/heads/main/takeit.xlsx"
 sheet_name2 = "Sheet1"
 data1 = pd.read_excel(file_path2, sheet_name=sheet_name2)
 
@@ -324,7 +324,7 @@ st.write("")
 st.write("")
 st.write("")
 
-file_path = "/mnt/c/Users/noura/Downloads/FIN2.csv"
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FIN2.csv"
 sheet_name = "Activities"
 cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages"]
 

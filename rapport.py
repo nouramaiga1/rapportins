@@ -56,7 +56,7 @@ st.title("RECAPITULATIF DE LA COLLECTE")
 col100, col101 = st.columns([2.5 , 1.75])
 
 with col100:
-    st.image("https://github.com/nouramaiga1/rapportins/raw/main/WhatsApp%20Image%202024-09-20%20at%2019.44.52.jpeg", width=800)
+    st.image("https://github.com/nouramaiga1/Photos-rapport/blob/main/identification_.jpeg?raw=true", width=700)
 
 with col101:
     st.write(" ")
@@ -64,9 +64,7 @@ with col101:
     st.write(" ")
     st.markdown(
         """
-        <div class="rounded-box">
-            <p>Le Projet d'enrôlement et d'identification des entreprenants de Côte d'Ivoire a été lancé le 04 septembre 2024, après sa phase pilote à San Pedro. Cette initiative du Ministère du Commerce et de l'Industrie vise à pallier les insuffisances dues à l'absence de base de sondage pour les entreprises du secteur informel et à la mise à jour incomplète des informations sur ces entreprises. Les objectifs principaux de ce projet incluent la création dune base de données exhaustive et la mise en place d'une solution adaptée.</p>
-        </div>
+        <h4>Le Projet d'enrôlement et d'identification des entreprenants de Côte d'Ivoire a été lancé le 04 septembre 2024, après sa phase pilote à San Pedro. Cette initiative du Ministère du Commerce et de l'Industrie vise à pallier les insuffisances dues à l'absence de base de sondage pour les entreprises du secteur informel et à la mise à jour incomplète des informations sur ces entreprises. Les objectifs principaux de ce projet incluent la création dune base de données exhaustive et la mise en place d'une solution adaptée.</h4>
         """,
         unsafe_allow_html=True
     )
@@ -991,7 +989,7 @@ category_counts = data_filtree["tranche_age"].value_counts()
 col111, col55 = st.columns([1.5 ,2])
 
 with col111:
-    st.image("https://github.com/nouramaiga1/rapportins/raw/main/WhatsApp%20Image%202024-10-10%20at%2010.45.14.jpeg", width=400)
+    st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/jeune_.jpeg", width=400)
 
 
 fig11 = px.pie(

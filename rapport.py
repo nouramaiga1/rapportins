@@ -171,9 +171,6 @@ st.markdown("""
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-import os
-import folium
-from streamlit_folium import folium_static
 import plotly.graph_objects as go
 
 file_path1 = "/mnt/c/Users/noura/Downloads/tabb.xlsx"

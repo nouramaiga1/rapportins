@@ -173,9 +173,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/blob/main/tabb.xlsx"
-sheet_name1 = "Sheet1"
-data1 = pd.read_excel(file_path1, sheet_name=sheet_name1)
+file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/tabb.csv"
+data1 = pd.read_csv(file_path1)
 
 df1 = pd.DataFrame(data1)
 df1["Dates"] = pd.to_datetime(df1["Dates"])
@@ -252,11 +251,9 @@ with col011:
     )
     st.write(commentaire)
 
-file_path2 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/raw/refs/heads/main/takeit.xlsx"
-sheet_name2 = "Sheet1"
+file_path2 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/takeit.csv"
 
-
-data1 = pd.read_excel(file_path2, sheet_name=sheet_name2)
+data1 = pd.read_csv(file_path2)
 
 # Vérifier que les colonnes nécessaires existent dans votre fichier Excel
 if 'VILLES' in data1.columns and 'FICHES ENREGISTREES' in data1.columns:

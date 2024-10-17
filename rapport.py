@@ -50,7 +50,10 @@ st.markdown("""
 
 
 
-st.title("RECAPITULATIF DE LA COLLECTE")
+st.markdown("<h1 style='text-align: center;'>RECAPITULATIF DE LA COLLECTE</h1>", unsafe_allow_html=True)
+st.write("")
+st.write("")
+st.write("")
 
 
 col100, col101 = st.columns([2.5 , 1.75])
@@ -69,7 +72,6 @@ with col101:
         unsafe_allow_html=True
     )
 
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown( """
     <style>

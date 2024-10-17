@@ -69,6 +69,8 @@ with col101:
         unsafe_allow_html=True
     )
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
 st.markdown( """
     <style>
     .custom-text {
@@ -156,6 +158,10 @@ with col32:
         unsafe_allow_html=True
     )
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
+st.write("")
+st.write("")
 st.markdown("""
     <style>
     .custom-text {
@@ -309,10 +315,7 @@ st.markdown(commento, unsafe_allow_html=True)
 
 st.write("")
 st.write("")
-st.write("")
-st.write("")
-st.write("")
-st.write("")
+
 
 file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FIN4.csv"
 sheet_name = "Activities"
@@ -348,6 +351,7 @@ data['size'] = data['size'].replace(remplacements)
 
 data['CA'] = pd.to_numeric(data['CA'].str.replace(',', '').str.replace(' FCFA', ''), errors='coerce')
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 villes_disponibles = ["Toutes les villes"] + list(data["commune"].unique())
 ville_selectionnee = st.selectbox("Sélectionnez une ville:", villes_disponibles)
@@ -367,6 +371,7 @@ average_ca = data_filtree['CA'].mean()
 
 average_age = data_filtree['ages'].mean()
 
+
 col1, col2 = st.columns(2)
 with col1:
     st.metric(label="Nombre d'enregistrements", value=number_of_rows)
@@ -380,6 +385,7 @@ with col3:
 with col4:
     st.metric(label="Moyenne du Chiffre d'Affaires", value=f"{average_ca:,.0f} FCFA")
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -459,6 +465,8 @@ col13, col14 = st.columns(2)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -558,6 +566,8 @@ with col40:
         st.write("Aucune donnée disponible pour afficher la répartition des secteurs d'activité.")
 
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
 
 st.markdown(
     """
@@ -621,6 +631,7 @@ with col45:
     else:
         st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -681,10 +692,7 @@ with col49:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des zones d'implantation.")
 
-
-
-
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -749,11 +757,7 @@ with col47:
     # Afficher le commentaire final
     st.markdown(f"La répartition des tailles d'activité est la suivante :\n\n{commentaire}")
 
-
-
-
-
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -946,6 +950,7 @@ st.markdown(commentaire)
 st.markdown('</div>', unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 
 st.markdown(
@@ -1001,7 +1006,6 @@ with col55:
     st.write("")
     st.write("")
     st.write(commentaire)
-
 
 
 st.markdown(
@@ -1095,7 +1099,7 @@ with col44:
     st.markdown(commentaire)
 
 
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -1116,6 +1120,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/ETALL.jpeg")
 
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
@@ -1259,7 +1265,7 @@ with col62:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -1281,7 +1287,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/habitss.png")
+st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/habitss.png")
+st.write("")
+st.write("")
+
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
 
@@ -1428,7 +1437,7 @@ with col62:
 
 
 
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -1449,6 +1458,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/NOURRITURE.jpeg")
 
 
 produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
@@ -1592,7 +1603,7 @@ with col72:
         st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
 
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """

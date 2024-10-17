@@ -1281,6 +1281,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/habitss.png")
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
 

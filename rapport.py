@@ -64,7 +64,7 @@ with col101:
     st.write(" ")
     st.markdown(
         """
-        <h4>Le Projet d'enrôlement et d'identification des entreprenants de Côte d'Ivoire a été lancé le 04 septembre 2024, après sa phase pilote à San Pedro. Cette initiative du Ministère du Commerce et de l'Industrie vise à pallier les insuffisances dues à l'absence de base de sondage pour les entreprises du secteur informel et à la mise à jour incomplète des informations sur ces entreprises. Les objectifs principaux de ce projet incluent la création dune base de données exhaustive et la mise en place d'une solution adaptée.</h4>
+        <h4>Le Projet d'enrôlement et d'identification des entreprenants de Côte d'Ivoire a été lancé le 04 septembre 2024, après sa phase pilote à San Pedro. Cette initiative du Ministère du Commerce et de l'Industrie vise à pallier les insuffisances dues à l'absence de base de sondage pour les entreprises du secteur informel et à la mise à jour incomplète des informations sur ces entreprises. Les objectifs principaux de ce projet incluent la création dune base de données exhaustive et la mise en place de solutions adaptées.</h4>
         """,
         unsafe_allow_html=True
     )
@@ -134,14 +134,14 @@ with col32:
             <ul>
                 <li>La validation des méthodologies et des processus</li>
                 <li>L'évaluation des outils et technologies utilisées</li>
-                <li>La formation et la capacitation du personnel</li>
-                <li>L'identification des problèmes et des goulots d'étranglement</li>
+                <li>La formation du personnel</li>
+                <li>L'identification de problèmes liés à l'enrôlement et des goulots d'étranglement</li>
                 <li>La planification des ajustements nécessaires</li>
             </ul>
         </div>
         <div class="rounded-box">
             <h2>4. Procédures de collecte de données</h2>
-            <p>Lors de la collecte, l'entreprenant :</p>
+            <p>Lors de la collecte, l'agent identificateur :</p>
             <ul>
                 <li>Se présente sur le lieu d'activité de l'entreprenant</li>
                 <li>Scanne la pièce d'identité de l'entreprenant</li>
@@ -149,7 +149,7 @@ with col32:
                 <li>Collecte les coordonnées GPS de l'activité</li>
                 <li>Prend une photo pour vérification de la fiche</li>
                 <li>Délivre une carte entreprenant à chaque personne enrôlée</li>
-                <li>Délivre un reçu permettant de finaliser l'opération</li>
+                <li>Délivre un reçu à la fin de l'opération</li>
             </ul>
         </div>
         """,
@@ -173,7 +173,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/tabb.csv"
+file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/tablast0.csv"
 data1 = pd.read_csv(file_path1)
 
 df1 = pd.DataFrame(data1)
@@ -223,35 +223,27 @@ fig7.add_trace(go.Scatter(
 
 # Ajouter un titre et les labels
 fig7.update_layout(
-    title="Nombre d'agents et fiches enregistrées par jour",
+    title="Nombre d'agents et d'activités enregistrées par jour",
     xaxis_title="Dates",
-    yaxis_title="Quantité",
-    showlegend=False
+    yaxis_title="Quantité"
 )
 
-# Afficher le graphique dans Streamlit
-col010, col011 = st.columns([3, 1])
+st.plotly_chart(fig7)
 
-with col010:
-    st.plotly_chart(fig7)
+percent_realization = (filtered_data['Nombre de fiches enregistrées'].sum() / filtered_data['Objectifs visés'].sum()) * 100
 
-with col011:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    commentaire = """Du **{}** au **{}**, **{}** agents ont réussi à enregistrer au total **{}** fiches sur un objectif de **{}**.""".format(
-        start_date, end_date, filtered_data["Nombre d'agents"].sum(), filtered_data['Nombre de fiches enregistrées'].sum(), filtered_data['Objectifs visés'].sum()
+commentaire = """Du **{}** au **{}**, 325 agents ont réussi à enregistrer au total **{}** fiches sur un objectif de **{}**, soit **{:.2f}%** de réalisation.""".format(
+start_date, end_date, filtered_data['Nombre de fiches enregistrées'].sum(), filtered_data['Objectifs visés'].sum(),percent_realization
     )
-    st.write(commentaire)
+st.write(commentaire)
 
-file_path2 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/takeit.csv"
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+
+file_path2 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/takeitlast0.csv"
 
 data1 = pd.read_csv(file_path2)
 
@@ -303,14 +295,13 @@ else:
 import streamlit as st
 
 # Create a string to store the dynamic comment
-commento = ""
+commento = """Du **04/09/2024** au **30/09/2024**, on a enregistré dans la ville d'**Odienné** un total de **4613** fiches sur un objectif de **3577**, soit **129%**.<br>
+Du **06/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Man** un total de **11839** fiches sur un objectif de **11528**, soit **102,7%**.<br>
+Du **20/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Gagnoa** un total de **4321** fiches sur un objectif de **2616**, soit **128,9%**.<br>
+Du **24/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Bouaké** un total de **7868** fiches sur un objectif de **3808**, soit **206,6%**.<br>
+Du **27/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Korhogo** un tatal de **2866** fiches sur un objectif de **1288**, soit **222,5%**.<br>
 
-# Iterate over the filtered data
-for index, row in filtered_data.iterrows():
-    city = row["VILLES"]
-    registered_files = row["FICHES ENREGISTREES"]
-    objectifs_vises = row["OBJECTIFS VISES"]
-    commento += f"A **{city}**, on a enregistré **{registered_files}** fiches pour un objectif de **{objectifs_vises}**.<br>"
+"""
 
 # Display the resulting comment string with new lines
 st.markdown(commento, unsafe_allow_html=True)
@@ -323,7 +314,7 @@ st.write("")
 st.write("")
 st.write("")
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FIN2.csv"
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FIN4.csv"
 sheet_name = "Activities"
 cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages"]
 
@@ -863,7 +854,7 @@ sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélect
 total_activities = filtered_df.shape[0]
 
 # Générer le commentaire pour le Top 5 des secteurs d'activité
-commenta = "Le top 5 des activités pour les {} activités est:\n".format(selected_size)
+commenta = "Le top 5 des {}s activités est:\n".format(selected_size)
 for sector, count in sector_counts.items():
     percentage = (count / total_activities) * 100
     commenta += f"- **{sector}** : {percentage:.2f}%\n"
@@ -1452,14 +1443,14 @@ st.markdown(
     }
     </style>
     <div class="special-box">
-        <h4>TOP3 ACTIVITES : PRODUITS AGRICOLES</h4>
+        <h4>TOP3 ACTIVITES : RESTAURANTS/MAQUIS/CAVES/BUVETTES</h4>
     </div>
     """,
     unsafe_allow_html=True
 )
 
 
-produits_agricoles_data = data[data["activity_sector"] == "PRODUITS AGRICOLES"]
+produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
 
 number_of_rows_produits_agricoles = len(produits_agricoles_data)
 
@@ -1471,18 +1462,18 @@ average_age_produits_agricoles = produits_agricoles_data['ages'].mean()
 
 col1, col2 = st.columns(2)
 with col1:
-    st.metric(label="Nombre d'enregistrements (PRODUITS AGRICOLES)", value=number_of_rows_produits_agricoles)
+    st.metric(label="Nombre d'enregistrements (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=number_of_rows_produits_agricoles)
 with col2:
-    st.metric(label="Moyenne d'Âge (PRODUITS AGRICOLES)", value=f"{average_age_produits_agricoles:,.1f} ans")
+    st.metric(label="Moyenne d'Âge (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_age_produits_agricoles:,.1f} ans")
 
 
 col3, col4 = st.columns(2)
 with col3:
-    st.metric(label="Chiffre d'Affaires Global (PRODUITS AGRICOLES)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
+    st.metric(label="Chiffre d'Affaires Global (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
 with col4:
-    st.metric(label="Moyenne du Chiffre d'Affaires (PRODUITS AGRICOLES)", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
+    st.metric(label="Moyenne du Chiffre d'Affaires (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
 
-produits_agricoles_data = data[data["activity_sector"] == "PRODUITS AGRICOLES"]
+produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
 
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
 
@@ -1516,7 +1507,7 @@ with col05:
     st.write("")
     st.write("")
     # Commentaire dynamique
-    commentaire = "La répartition par genre des vendeurs de produits agricoles est la suivante :\n"
+    commentaire = "La répartition par genre des restaurateurs est la suivante :\n"
     for genre, count in category_counts.items():
         pourcentage = (count / category_counts.sum()) * 100
         commentaire += f"- **{genre}** : {count} ({pourcentage:.2f}%)\n"
@@ -1524,7 +1515,7 @@ with col05:
     st.write(commentaire)
 
 
-produits_agricoles_data = data[data["activity_sector"] == "PRODUITS AGRICOLES"]
+produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
 
 category_counts = produits_agricoles_data["tranche_age"].value_counts()
 
@@ -1560,7 +1551,7 @@ with col70:
     st.write(commentaire)
 
 
-produits_agricoles_data = data[data["activity_sector"] == "PRODUITS AGRICOLES"]
+produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
 
 category_counts = produits_agricoles_data["stade_de_maturite"].value_counts()
 

@@ -49,9 +49,11 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
-
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.title("RECAPITULATIF DE LA COLLECTE")
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 col100, col101 = st.columns([2.5 , 1.75])
 
@@ -173,6 +175,8 @@ st.markdown("""
     """,
     unsafe_allow_html=True
 )
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 import pandas as pd
 import matplotlib.pyplot as plt

@@ -72,7 +72,9 @@ with col101:
         unsafe_allow_html=True
     )
 
-
+st.write("")
+st.write("")
+st.write("")
 st.markdown( """
     <style>
     .custom-text {

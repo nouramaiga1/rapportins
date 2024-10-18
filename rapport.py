@@ -261,9 +261,14 @@ data1 = pd.read_csv(file_path2)
 if 'VILLES' in data1.columns and 'FICHES ENREGISTREES' in data1.columns:
     filtered_data = data1  # Utilisez la DataFrame 'data1' directement ou appliquez un filtre si nécessaire
 
+    custom_order = ['Odienné', 'Man', 'Gagnoa', 'Bouaké', 'Korhogo']
+
     # Création de la figure
     fig20 = go.Figure()
-    filtered_data = filtered_data.sort_values(by=['OBJECTIFS VISES', 'FICHES ENREGISTREES'], ascending=False)
+
+    filtered_data['VILLES'] = pd.Categorical(filtered_data['VILLES'], categories=custom_order, ordered=True)
+
+    filtered_data = filtered_data.sort_values(by='VILLES')
 
 
 
@@ -305,11 +310,11 @@ else:
 import streamlit as st
 
 # Create a string to store the dynamic comment
-commento = """Du **04/09/2024** au **30/09/2024**, on a enregistré dans la ville d'**Odienné** un total de **4450** fiches sur un objectif de **2413**, soit **184,4%**.<br>
-Du **06/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Man** un total de **11335** fiches sur un objectif de **7948**, soit **142,6%**.<br>
-Du **20/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Gagnoa** un total de **4060** fiches sur un objectif de **1825**, soit **222,5%**.<br>
-Du **24/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Bouaké** un total de **7188** fiches sur un objectif de **2483**, soit **289,5%**.<br>
-Du **27/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Korhogo** un tatal de **2593** fiches sur un objectif de **920**, soit **281,8%**.<br>
+commento = """Du **04/09/2024** au **30/09/2024**, on a enregistré dans la ville d'**Odienné** un total de **4 450** fiches sur un objectif de **2 413**, soit **184,4%**.<br>
+Du **06/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Man** un total de **11 335** fiches sur un objectif de **7 948**, soit **142,6%**.<br>
+Du **20/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Gagnoa** un total de **4 060** fiches sur un objectif de **1 825**, soit **222,5%**.<br>
+Du **24/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Bouaké** un total de **7 188** fiches sur un objectif de **2 483**, soit **289,5%**.<br>
+Du **27/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Korhogo** un tatal de **2 593** fiches sur un objectif de **920**, soit **281,8%**.<br>
 
 """
 
@@ -335,8 +340,7 @@ st.markdown("""
 )
 
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FINFIN.csv"
-sheet_name = "Activities"
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FINFINLAST.csv"
 cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages"]
 
 @st.cache_data

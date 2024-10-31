@@ -5,7 +5,7 @@ from io import BytesIO
 import requests
 
 # Charger les données contenant les URLs des images
-data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/lientestlast1.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/CONFIRMED.csv")
 
 st.set_page_config(layout="wide")
 
@@ -13,8 +13,14 @@ st.set_page_config(layout="wide")
 validator_emails = data['validator email'].unique()
 selected_email = st.selectbox("Sélectionnez votre email", validator_emails)
 
-# Filtrer les données pour n'afficher que les photos associées à l'email sélectionné
-filtered_data = data[data['validator email'] == selected_email]
+# Ajouter un sélecteur pour la date
+# Convertir les dates en format datetime pour faciliter la sélection
+data['created_at'] = pd.to_datetime(data['created_at'])
+dates = data['created_at'].dt.date.unique()  # Extraire les dates uniques
+selected_date = st.date_input("Sélectionnez la date", value=min(dates), min_value=min(dates), max_value=max(dates))
+
+# Filtrer les données par email et par date
+filtered_data = data[(data['validator email'] == selected_email) & (data['created_at'].dt.date == selected_date)]
 
 # Extraire les URLs des images après filtrage
 image_urls = filtered_data['photo_url']

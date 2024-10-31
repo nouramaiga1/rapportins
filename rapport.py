@@ -340,8 +340,8 @@ st.markdown("""
 )
 
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FINFINLAST.csv"
-cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages"]
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FINFINLASTSTP.csv"
+cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type"]
 
 @st.cache_data
 def load_data(file_path, sheet_name, cols):
@@ -374,6 +374,7 @@ data['size'] = data['size'].replace(remplacements)
 data['CA'] = pd.to_numeric(data['CA'].str.replace(',', '').str.replace(' FCFA', ''), errors='coerce')
 
 
+
 villes_disponibles = ["Toutes les villes"] + list(data["commune"].unique())
 ville_selectionnee = st.selectbox("Sélectionnez une ville:", villes_disponibles)
 
@@ -392,20 +393,167 @@ average_ca = data_filtree['CA'].mean()
 
 average_age = data_filtree['ages'].mean()
 
+average_employee = data_filtree['employees_count'].mean()
+
 formatted_number = f"{number_of_rows:,.0f}".replace(",", " ")
 
-col1, col2 = st.columns(2)
+col1, col2, colonne = st.columns(3)
 with col1:
     st.metric(label="Nombre d'enregistrements", value=formatted_number)
 with col2:
     st.metric(label="Moyenne d'Âge", value=f"{average_age:,.1f} ans")
+with colonne:
+    st.metric(label="Nombre d'employés moyen", value=f"{average_employee:,.1f}")
 
 
-col3, col4 = st.columns(2)
+col3, col4, colonnie = st.columns(3)
 with col3:
     st.metric(label="Chiffre d'Affaires Global", value=f"{total_ca:,.0f} FCFA")
 with col4:
     st.metric(label="Moyenne du Chiffre d'Affaires", value=f"{average_ca:,.0f} FCFA")
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+    <style>
+    .custom-box {
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        background-color: #fAfAfA;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 15px;
+        margin-top: 40px;
+    }
+    </style>
+    <div class="custom-box">
+        <h4>UNE MAJORITE SANS DOCUMENTS D'IDENTITE</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+category_counts = data_filtree["Entrepreneur identity_document_type"].value_counts()
+
+data['Entrepreneur identity_document_type'] = data['Entrepreneur identity_document_type'].replace({'passeport': 'PASSEPORT'})
+
+# Assurez-vous de commencer par fusionner les catégories avant de créer la figure
+if not category_counts.empty:
+    # Fusionner "passeport" et "PASSEPORT"
+    category_counts.index = category_counts.index.str.replace("passeport", "PASSEPORT", case=False)
+
+    # Recalculer les totaux pour les catégories combinées
+    category_counts = category_counts.groupby(category_counts.index).sum()
+
+    # Créer la figure après avoir fusionné les catégories
+    cola1, cola2 = st.columns(2)
+
+    figu = px.pie(
+        names=category_counts.index,  # Catégories uniques
+        values=category_counts.values,  # Quantités associées à chaque catégorie
+        hole=0.3,  # Pour un donut chart (optionnel)
+        title="REPARTITION PAR DOCUMENT D'IDENTITE"
+    )
+
+    figu.update_traces(textinfo='none', hoverinfo='label+percent')
+
+    with cola2:
+        st.plotly_chart(figu)
+
+    with cola1:
+        st.write("")  # Ajout d'espaces vides
+        st.write("")  # Ajout d'espaces vides
+        st.write("")  # Ajout d'espaces vides
+        st.write("")  # Ajout d'espaces vides
+
+
+        # Calculer le total pour les pourcentages
+        total = category_counts.sum()
+
+        st.write("Les entreprenants présentent:")
+
+        ordered_categories = ['CNI', 'ATTESTATION D\'IDENTITE', 'PASSEPORT', 'AUCUN DOCUMENT']
+
+        # Créer un commentaire dynamique
+        comments = []
+        for category in ordered_categories:
+            if category in category_counts:
+                count = category_counts[category]
+                percentage = (count / total) * 100
+                comments.append(f"**{percentage:.2f}%** des entreprenants ont **{category}**")
+
+        # Afficher le commentaire avec un retour à la ligne
+        commentaire = "<br>".join(comments)
+        st.markdown(commentaire, unsafe_allow_html=True)
+else:
+    st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+    <style>
+    .custom-box {
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        background-color: #fAfAfA;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 15px;
+        margin-top: 40px;
+    }
+    </style>
+    <div class="custom-box">
+        <h4>PLUS DE SMARTPHONES QUE DE TELEPHONES A CLAVIER</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+category_counts = data_filtree["terminal_type"].value_counts()
+
+bof, baf = st.columns(2)
+
+ah = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title="TYPE DE TELEPHONE DES ENTREPENANTS"
+)
+
+ah.update_traces(textinfo='none', hoverinfo='label+percent')
+
+with baf:
+    st.plotly_chart(ah)
+
+with bof:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    if not category_counts.empty:
+        # Calculer le total pour le pourcentage
+        total = category_counts.sum()
+
+        # Créer un commentaire dynamique
+        comments = []
+        for category, count in category_counts.items():
+            percentage = (count / total) * 100
+            comments.append(f"Les **{category}S** sont représentés à **{percentage:.2f}%**")
+
+        # Afficher le commentaire avec un retour à la ligne
+        commentaire = " et ".join(comments)
+        st.markdown(commentaire)
+    else:
+        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
@@ -423,72 +571,83 @@ st.markdown(
     }
     </style>
     <div class="custom-box">
-        <h4>DIFFERENTS SECTEURS D'ACTIVITE</h4>
+        <h4>DIFFERENTS SECTEURS D'ACTIVITES</h4>
     </div>
     """,
     unsafe_allow_html=True
 )
 
+category_counts = data_filtree["activity_sector"].value_counts()
 
+cola5, cola6 = st.columns(2)
 
+with cola5:
+    st.write("")
+    st.write("")
+    st.write("")
 
-# Convertir les données en DataFrame pour faciliter le traitement
-sector_counts = category_counts.reset_index()
-sector_counts.columns = ['Secteur', 'Nombre']  # Renommer les colonnes pour plus de clarté
-
-# Calculer le total des occurrences pour obtenir les pourcentages
-total_entries = sector_counts['Nombre'].sum()
-
-# Ajouter une colonne pour les pourcentages
-sector_counts['Pourcentage'] = (sector_counts['Nombre'] / total_entries) * 100
-
-# Trier les secteurs par nombre et sélectionner le Top 5
-top_5_sectors = sector_counts.head(5)
-
-# Générer le texte dynamique pour le Top 5 avec les pourcentages
-top_5_list = [f"- **{row['Secteur']}** : {row['Pourcentage']:.2f}%" for index, row in top_5_sectors.iterrows()]
-top_5_text = "\n".join(top_5_list)  # Joindre les éléments avec des sauts de ligne HTML
-
-
-# Commentaire final à afficher
-commentaire = f"Les 5 principaux secteurs d'activité sont :\n\n{top_5_text}"
-
-col35, col36 = st.columns(2)
-
-fig = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title=f"REPARTITION PAR SECTEURS D'ACTIVITE"
-)
-
-fig.update_traces(textinfo='none', hoverinfo='label+percent')
-fig.update_layout(showlegend=False)
-
-with col35:
-    st.plotly_chart(fig)
-
-with col36:
-    st.markdown(
-        f"""
-        <div class="custom-comment">
-            <br><br><br><br>  <!-- Ajoutez autant de <br> que nécessaire pour l'espacement -->
-            {commentaire}
-        </div>
-        """,
-        unsafe_allow_html=True
+    figure = px.pie(
+        names=category_counts.index,  # Catégories uniques
+        values=category_counts.values,  # Quantités associées à chaque catégorie
+        hole=0.3,  # Pour un donut chart (optionnel)
+        title=f"REPARTITION PAR SECTEUR D'ACTIVITE"
     )
 
+    figure.update_traces(textinfo='none', hoverinfo='label+percent')
+    figure.update_layout(showlegend=False)
 
+    st.plotly_chart(figure)
 
+# Calculer le top 5 des secteurs d'activité
+top5_sectors = category_counts.nlargest(5)
 
+# Calculer le nombre d'employés moyen pour chaque secteur du top 5
+average_employees_per_sector = {
+    sector: data_filtree[data_filtree['activity_sector'] == sector]['employees_count'].mean()
+    for sector in top5_sectors.index
+}
 
+# Calculer le total pour obtenir les pourcentages
+total_entries = category_counts.sum()
+top5_percentages = (top5_sectors / total_entries) * 100
 
+# Créer le texte dynamique pour le top 5
+top5_list = [
+    f"- **{sector}** : {percentage:.2f}% (Moyenne employés : {average_employees_per_sector[sector]:.2f})"
+    for sector, percentage in zip(top5_sectors.index, top5_percentages)
+]
+top5_text = "\n".join(top5_list)  # Joindre les éléments avec des sauts de ligne HTML
 
-col13, col14 = st.columns(2)
+# Commentaire final
+commentaire = f"Les principaux secteurs d'activité sont :\n\n{top5_text}\n\n"
 
+# Espace avant le nombre moyen d'employés
+st.write("\n" * 3)  # Ajoute 3 lignes vides
+
+# Afficher le commentaire des secteurs
+with cola6:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.markdown(commentaire)
+    st.write("")
+
+    # Afficher le nombre moyen d'employés pour les secteurs du top 5
+    average_employees_text = "\n".join(
+    [f"- **{sector}** : {average_employees_per_sector[sector]:.2f} employés" for sector in top5_sectors.index]
+    )
+    st.markdown(f"Le nombre moyen d'employés pour ces secteurs est :\n{average_employees_text}")
 
 st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+
+
+
+
+
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
@@ -953,14 +1112,24 @@ filtered_df = data_filtree[data_filtree['genre'] == selected_gender]
 total_ca = filtered_df['CA'].sum()
 average_ca = filtered_df['CA'].mean()
 average_age = filtered_df['ages'].mean()
+average_employee = filtered_df['employees_count'].mean()
 
-st.metric(label="Âge Moyen", value=f"{average_age:.1f} ans")
+colonna, colie = st.columns(2)
+with colonna:
+    st.metric(label="Âge Moyen", value=f"{average_age:.1f} ans")
+
+with colie:
+    st.metric(label="Nombre d'enployés moyen", value=f"{average_employee:,.1f}")
+
+
 col5, col6 = st.columns(2)
 
 with col5:
     st.metric(label="Chiffre d'Affaires Total", value=f"{total_ca:,.0f} FCFA")
 with col6:
     st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_ca:,.0f} FCFA")
+
+
 
 fig5 = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"REPARTITION DES SECTEURS PAR GENRE")
 
@@ -1067,6 +1236,7 @@ data_filtree_moins_de_40 = data_filtree[data_filtree['tranche_age'] != 'Plus de 
 total_caj = data_filtree_moins_de_40['CA'].sum()
 average_caj = data_filtree_moins_de_40['CA'].mean()
 average_agej = data_filtree_moins_de_40['ages'].mean()
+average_employeej = data_filtree_moins_de_40['employees_count'].mean()
 
 with col55:
     col41, col42 = st.columns(2)
@@ -1074,7 +1244,8 @@ with col55:
         st.metric(label="Chiffre d'Affaires Total", value=f"{total_caj:,.0f} FCFA")
         st.metric(label="Âge Moyen", value=f"{average_agej:.1f} ans")
     with col42:
-        st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_ca:,.0f} FCFA")
+        st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_caj:,.0f} FCFA")
+        st.metric(label="Nombre moyen d'employés", value=f"{average_employeej:,.1f}")
     st.markdown("---")
     st.plotly_chart(fig11)
     st.write(commentaire)
@@ -1178,20 +1349,26 @@ average_ca_vente_sur_etal = vente_sur_etal_data['CA'].mean()
 
 average_age_vente_sur_etal = vente_sur_etal_data['ages'].mean()
 
+average_employee_vente_sur_etal = vente_sur_etal_data['employees_count'].mean()
+
 formatted_number_vente_sur_etal = f"{number_of_rows_vente_sur_etal:,.0f}".replace(",", " ")
 
-col1, col2 = st.columns(2)
+col1, col2, cola = st.columns(3)
 with col1:
     st.metric(label="Nombre d'enregistrements (VENTE SUR ETAL)", value=formatted_number_vente_sur_etal)
 with col2:
     st.metric(label="Moyenne d'Âge (VENTE SUR ETAL)", value=f"{average_age_vente_sur_etal:,.1f} ans")
+with cola:
+    st.metric(label="Nombre d'employés moyen (VENTE SUR ETAL)", value=f"{average_employee_vente_sur_etal:,.1f}")
 
 
-col3, col4 = st.columns(2)
+
+col3, col4, coly = st.columns(3)
 with col3:
     st.metric(label="Chiffre d'Affaires Global (VENTE SUR ETAL)", value=f"{total_ca_vente_sur_etal:,.0f} FCFA")
 with col4:
     st.metric(label="Moyenne du Chiffre d'Affaires (VENTE SUR ETAL)", value=f"{average_ca_vente_sur_etal:,.0f} FCFA")
+
 
 category_counts = vente_sur_etal_data["genre"].value_counts()
 
@@ -1352,16 +1529,20 @@ average_ca_vetements = vetements_data['CA'].mean()
 
 average_age_vetements = vetements_data['ages'].mean()
 
+average_employee_vetements = vetements_data['employees_count'].mean()
+
 formatted_number_vetements = f"{number_of_rows_vetements:,.0f}".replace(",", " ")
 
-col1, col2 = st.columns(2)
+col1, col2, fatigue = st.columns(3)
 with col1:
     st.metric(label="Nombre d'enregistrements (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=formatted_number_vetements)
 with col2:
     st.metric(label="Moyenne d'Âge (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{average_age_vetements:,.1f} ans")
+with fatigue:
+    st.metric(label="Nombre d'employés moyen (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{average_employee_vetements:,.1f}")
 
 
-col3, col4 = st.columns(2)
+col3, col4, feh = st.columns(3)
 with col3:
     st.metric(label="Chiffre d'Affaires Global (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{total_ca_vetements:,.0f} FCFA")
 with col4:
@@ -1527,14 +1708,18 @@ average_ca_produits_agricoles = produits_agricoles_data['CA'].mean()
 
 average_age_produits_agricoles = produits_agricoles_data['ages'].mean()
 
-col1, col2 = st.columns(2)
+average_employee_produits_agricoles = produits_agricoles_data['ages'].mean()
+
+col1, col2, tired = st.columns(3)
 with col1:
     st.metric(label="Nombre d'enregistrements (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=number_of_rows_produits_agricoles)
 with col2:
     st.metric(label="Moyenne d'Âge (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_age_produits_agricoles:,.1f} ans")
+with tired:
+    st.metric(label="Nombre d'employés moyen (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_age_produits_agricoles:,.1f}")
 
 
-col3, col4 = st.columns(2)
+col3, col4, eeh = st.columns(3)
 with col3:
     st.metric(label="Chiffre d'Affaires Global (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
 with col4:

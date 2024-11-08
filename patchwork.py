@@ -22,6 +22,8 @@ selected_date = st.date_input("Sélectionnez la date", value=min(dates), min_val
 # Filtrer les données par email et par date
 filtered_data = data[(data['validator email'] == selected_email) & (data['created_at'].dt.date == selected_date)]
 
+st.metric("Nombre de photos", len(filtered_data))
+
 # Extraire les URLs des images après filtrage
 image_urls = filtered_data['photo_url']
 image_ids = filtered_data['id']

@@ -56,10 +56,55 @@ st.write("")
 st.write("")
 
 
-col100, col101 = st.columns([2.5 , 1.75])
+# CSS pour la gestion responsive des images et colonnes
+st.markdown("""
+    <style>
+    /* Style pour le conteneur d'image responsive */
+    .responsive-image-container {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Style pour l'image responsive */
+    .responsive-image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Ajustements pour mobile */
+    @media (max-width: 768px) {
+        .responsive-image-container {
+            max-width: 100%;
+            padding: 0 10px;
+        }
+
+        /* Ajuster les colonnes sur mobile */
+        .element-container {
+            width: 100% !important;
+        }
+
+        /* Ajuster les marges sur mobile */
+        .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Création des colonnes avec ratio responsive
+col100, col101 = st.columns([2.5, 1.75])
 
 with col100:
-    st.image("https://github.com/nouramaiga1/Photos-rapport/blob/main/identification_.jpeg?raw=true", width=700)
+    # Utilisation de markdown pour l'image responsive
+    st.markdown("""
+        <div class="responsive-image-container">
+            <img src="https://github.com/nouramaiga1/Photos-rapport/blob/main/identification_.jpeg?raw=true"
+                 alt="Identification">
+        </div>
+    """, unsafe_allow_html=True)
 
 with col101:
     st.write(" ")
@@ -183,7 +228,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/tablastlasst.csv"
+file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/AGENTSVSPERF2.csv"
 data1 = pd.read_csv(file_path1)
 
 df1 = pd.DataFrame(data1)
@@ -222,14 +267,6 @@ fig7.add_trace(go.Scatter(
     line=dict(color='firebrick', width=4)
 ))
 
-# Courbe pour les objectifs visés
-fig7.add_trace(go.Scatter(
-    x=filtered_data["Dates"],
-    y=filtered_data["Objectifs visés"],
-    mode="lines+markers",
-    name="Objectifs visés",
-    line=dict(color='orange', width=4)
-))
 
 # Ajouter un titre et les labels
 fig7.update_layout(
@@ -240,12 +277,12 @@ fig7.update_layout(
 
 st.plotly_chart(fig7)
 
-percent_realization = (filtered_data['Nombre de fiches enregistrées'].sum() / filtered_data['Objectifs visés'].sum()) * 100
 
-commentaire = """Du **{}** au **{}**, **325** agents ont réussi à enregistrer au total **{}** fiches sur l'objectif attendu de **{}** pour ce mois de lancement, soit **{:.2f}%** de réalisation.""".format(
-start_date, end_date, "{:,.0f}".format(filtered_data['Nombre de fiches enregistrées'].sum()).replace(",", " "), "{:,.0f}".format(filtered_data['Objectifs visés'].sum()).replace(",", " "), percent_realization
+commentaire = """Du **{}** au **{}**, nos agents ont réussi à enregistrer au total **{}** fiches.""".format(
+start_date, end_date, "{:,.0f}".format(filtered_data['Nombre de fiches enregistrées'].sum()).replace(",", " ")
     )
 st.write(commentaire)
+st.write("Nous avons observé une période d'inactivité entre juillet et septembre, avant de reprendre pleinement les activités en septembre.")
 
 st.write("")
 st.write("")
@@ -253,79 +290,6 @@ st.write("")
 st.write("")
 st.write("")
 
-file_path2 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/takeitlastlast.csv"
-
-data1 = pd.read_csv(file_path2)
-
-# Vérifier que les colonnes nécessaires existent dans votre fichier Excel
-if 'VILLES' in data1.columns and 'FICHES ENREGISTREES' in data1.columns:
-    filtered_data = data1  # Utilisez la DataFrame 'data1' directement ou appliquez un filtre si nécessaire
-
-    custom_order = ['Odienné', 'Man', 'Gagnoa', 'Bouaké', 'Korhogo']
-
-    # Création de la figure
-    fig20 = go.Figure()
-
-    filtered_data['VILLES'] = pd.Categorical(filtered_data['VILLES'], categories=custom_order, ordered=True)
-
-    filtered_data = filtered_data.sort_values(by='VILLES')
-
-
-
-    # Ajouter les bâtonnets pour les fiches enregistrées
-    fig20.add_trace(go.Bar(
-        x=filtered_data["VILLES"],  # S'assurer que la colonne 'VILLES' existe
-        y=filtered_data["FICHES ENREGISTREES"],  # S'assurer que la colonne 'FICHES ENREGISTREES' existe
-        name="Fiches enregistrées",
-        marker=dict(color='royalblue'),
-        hoverinfo='y'  # Affiche le nombre de fiches enregistrées lors du survol
-    ))
-
-
-    fig20.add_trace(go.Bar(
-    x=filtered_data["VILLES"],
-    y=filtered_data["OBJECTIFS VISES"],
-    name="Objectifs visés",
-    marker=dict(color='red'),
-    hoverinfo='y'  # Affiche le nombre d'objectifs restants lors du survol
-))
-
-
-    # Ajouter un titre et les labels
-    fig20.update_layout(
-        title="Avancement des fiches enregistrées par rapport aux objectifs",
-        xaxis_title="Villes",
-        yaxis_title="Nombre de fiches",
-        barmode='group',  # Permet de superposer les barres
-        legend_title="Statistiques"
-    )
-
-
-
-    # Afficher le graphique dans Streamlit
-    st.plotly_chart(fig20)
-else:
-    st.error("Les colonnes 'VILLES' et 'FICHES ENREGISTREES' n'existent pas dans votre fichier Excel.")
-
-import streamlit as st
-
-# Create a string to store the dynamic comment
-commento = """Du **04/09/2024** au **30/09/2024**, on a enregistré dans la ville d'**Odienné** un total de **4 450** fiches sur un objectif de **2 413**, soit **184,4%**.<br>
-Du **06/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Man** un total de **11 335** fiches sur un objectif de **7 948**, soit **142,6%**.<br>
-Du **20/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Gagnoa** un total de **4 060** fiches sur un objectif de **1 825**, soit **222,5%**.<br>
-Du **24/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Bouaké** un total de **7 188** fiches sur un objectif de **2 483**, soit **289,5%**.<br>
-Du **27/09/2024** au **30/09/2024**, on a enregistré dans la ville de **Korhogo** un tatal de **2 593** fiches sur un objectif de **920**, soit **281,8%**.<br>
-
-"""
-
-# Display the resulting comment string with new lines
-st.markdown(commento, unsafe_allow_html=True)
-
-
-st.write("")
-st.write("")
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown("""
     <style>
@@ -340,8 +304,8 @@ st.markdown("""
 )
 
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/FINFINLASTSTP.csv"
-cols = ["status", "commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "location_zone", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type"]
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLAST.csv"
+cols = ["commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type","type etal","type vivrier"]
 
 @st.cache_data
 def load_data(file_path, sheet_name, cols):
@@ -371,7 +335,7 @@ remplacements = {
 
 data['size'] = data['size'].replace(remplacements)
 
-data['CA'] = pd.to_numeric(data['CA'].str.replace(',', '').str.replace(' FCFA', ''), errors='coerce')
+
 
 
 
@@ -429,7 +393,7 @@ st.markdown(
     }
     </style>
     <div class="custom-box">
-        <h4>UNE MAJORITE SANS DOCUMENTS D'IDENTITE</h4>
+        <h4>UNE MAJORITE SANS DOCUMENT D'IDENTITE</h4>
     </div>
     """,
     unsafe_allow_html=True
@@ -471,9 +435,10 @@ if not category_counts.empty:
         # Calculer le total pour les pourcentages
         total = category_counts.sum()
 
-        st.write("Les entreprenants présentent:")
+        st.write("La grade partie des entreprenants n'ont aucun document d'identité lors de l'enrôlement.")
+        st.write("Lorsqu'ils en ont, ils présentent dans :")
 
-        ordered_categories = ['CNI', 'ATTESTATION D\'IDENTITE', 'PASSEPORT', 'AUCUN DOCUMENT']
+        ordered_categories = ['CNI', 'ATTESTATION', 'PASSEPORT']
 
         # Créer un commentaire dynamique
         comments = []
@@ -481,7 +446,7 @@ if not category_counts.empty:
             if category in category_counts:
                 count = category_counts[category]
                 percentage = (count / total) * 100
-                comments.append(f"**{percentage:.2f}%** des entreprenants ont **{category}**")
+                comments.append(f"**{percentage:.2f}%** des cas : **{category}**")
 
         # Afficher le commentaire avec un retour à la ligne
         commentaire = "<br>".join(comments)
@@ -506,7 +471,7 @@ st.markdown(
     }
     </style>
     <div class="custom-box">
-        <h4>PLUS DE SMARTPHONES QUE DE TELEPHONES A CLAVIER</h4>
+        <h4>DES ENTREPRENANTS FAMILIERS DES TECHNOLOGIES MOBILES</h4>
     </div>
     """,
     unsafe_allow_html=True
@@ -537,6 +502,72 @@ with bof:
     st.write("")
     st.write("")
     st.write("")
+    st.write("Les entreprenants ont pour la grande majorité des smartphones. En terme de représentation, on a :")
+    if not category_counts.empty:
+        # Calculer le total pour le pourcentage
+        total = category_counts.sum()
+
+        # Créer un commentaire dynamique
+        comments = []
+        for category, count in category_counts.items():
+            percentage = (count / total) * 100
+            comments.append(f"**{category}** : **{percentage:.2f}%**")
+
+        # Afficher le commentaire avec un retour à la ligne
+        commentaire = " et ".join(comments)
+        st.markdown(commentaire)
+    else:
+        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
+
+st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+    <style>
+    .custom-box {
+        border-radius: 15px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        background-color: #fAfAfA;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 15px;
+        margin-top: 40px;
+    }
+    </style>
+    <div class="custom-box">
+        <h4>DES ACTIVITES EN GRANDE PARTIE NON DECLAREES</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+category_counts = data_filtree["is_cnps_declared"].value_counts()
+
+column5, column6 = st.columns(2)
+
+figcnps = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title="STATUT CNPS"
+)
+
+figcnps.update_traces(textinfo='none', hoverinfo='label+percent')
+
+with column6:
+    st.plotly_chart(figcnps)
+
+with column5:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     st.write("")
     if not category_counts.empty:
         # Calculer le total pour le pourcentage
@@ -556,6 +587,8 @@ with bof:
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+
+
 
 st.markdown(
     """
@@ -613,7 +646,7 @@ top5_percentages = (top5_sectors / total_entries) * 100
 
 # Créer le texte dynamique pour le top 5
 top5_list = [
-    f"- **{sector}** : {percentage:.2f}% (Moyenne employés : {average_employees_per_sector[sector]:.2f})"
+    f"- **{sector}** : {percentage:.2f}%"
     for sector, percentage in zip(top5_sectors.index, top5_percentages)
 ]
 top5_text = "\n".join(top5_list)  # Joindre les éléments avec des sauts de ligne HTML
@@ -815,66 +848,8 @@ with col45:
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DIFFERENTES ZONES D'IMPLANTATION</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-category_counts = data_filtree["location_zone"].value_counts()
 
-col49, col50 = st.columns(2)
-
-fig10 = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="REPARTITION PAR ZONES D'IMPLANTATION"
-)
-
-fig10.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col50:
-    st.plotly_chart(fig10)
-
-with col49:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction des zones d'implantation est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.write("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des zones d'implantation.")
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -971,7 +946,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/Affou.jpeg")
+st.markdown("""
+    <div class="responsive-image-container">
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/Affou.jpeg"
+             alt="Affou">
+    </div>
+""", unsafe_allow_html=True)
 
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
 
@@ -1205,11 +1185,16 @@ data['tranche_age'] = data['tranche_age']
 
 category_counts = data_filtree["tranche_age"].value_counts()
 
-col111, col55 = st.columns([1.5 ,2])
+col111, col55 = st.columns([1.5, 2])
 
 with col111:
-    st.write("")
-    st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/jeune_.jpeg", width=550)
+    st.write("")  # Garde l'espace
+    st.markdown("""
+        <div class="responsive-image-container">
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/jeune_.jpeg"
+                 alt="Jeune">
+        </div>
+    """, unsafe_allow_html=True)
 
 
 fig11 = px.pie(
@@ -1293,11 +1278,19 @@ top_5_text = "\n".join(top_5_list)  # Joindre les éléments avec des sauts de l
 commentaire = f"Voici les 5 principaux secteurs d'activité exercés par les jeunes avec leur pourcentage:\n\n{top_5_text}"
 
 with col43:
+    # Garde les espaces verticaux
     st.write("")
     st.write("")
     st.write("")
     st.write("")
-    st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/fillemarchee.png",width=550)
+
+    # Version avec markdown (plus de contrôle sur le style)
+    st.markdown("""
+        <div class="responsive-image-container">
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/fillemarchee.png"
+                 alt="Fille marché">
+        </div>
+    """, unsafe_allow_html=True)
 
 with col44:
     st.write("")
@@ -1336,7 +1329,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/ETALL.jpeg")
+# Version avec markdown (plus de contrôle sur le style)
+st.markdown("""
+    <div class="responsive-image-container">
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/ETALL.jpeg"
+             alt="ETALL">
+    </div>
+""", unsafe_allow_html=True)
 
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
@@ -1492,6 +1491,89 @@ with col62:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
+
+
+vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
+
+category_counts = vente_sur_etal_data["type etal"].value_counts()
+
+column1, column2 = st.columns(2)
+
+with column2:
+    # Limiter à un top 5 des catégories les plus fréquentes
+    top5_category_counts = category_counts.nlargest(5)
+
+    # Création d'un graphique en donut pour les catégories principales
+    figetal = px.pie(
+        names=top5_category_counts.index,  # Top 5 des catégories
+        values=top5_category_counts.values,  # Quantités pour chaque catégorie
+        hole=0.3,  # Pour un donut chart
+        title="TOP 5 DES TYPES D'ETALS"
+    )
+    figetal.update_traces(textinfo='none', hoverinfo='label+percent')
+    st.plotly_chart(figetal)
+
+with column1:
+    # Espacement visuel
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    st.write("Les étals regroupent une grande variété de marchandises et d'activités.")
+
+    # Générer un commentaire dynamique pour le top 5
+    if not top5_category_counts.empty:
+        total_top5 = top5_category_counts.sum()
+        comments = ["La répartition des 5 principaux types d'étals est la suivante :"]
+        for category, count in top5_category_counts.items():
+            percentage = (count / total_top5) * 100
+            comments.append(f"**{category}** : {percentage:.2f}%")
+
+        # Affichage des commentaires
+        st.markdown("<br>".join(comments), unsafe_allow_html=True)
+    else:
+        st.write("Aucune donnée disponible pour afficher la répartition des types d'étal.")
+
+
+
+vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
+
+category_counts = vente_sur_etal_data["type vivrier"].value_counts()
+
+column3, column4 = st.columns(2)
+
+with column4:
+    # Limiter à un top 5 des catégories les plus fréquentes
+    top5_category_counts = category_counts.nlargest(5)
+
+    # Création d'un graphique en donut pour les catégories principales
+    figviv = px.pie(
+        names=top5_category_counts.index,  # Top 5 des catégories
+        values=top5_category_counts.values,  # Quantités pour chaque catégorie
+        hole=0.3,  # Pour un donut chart
+        title="TOP 5 DES VIVRIERS"
+    )
+    figviv.update_traces(textinfo='none', hoverinfo='label+percent')
+    st.plotly_chart(figviv)
+
+with column3:
+    # Espacement visuel
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+
+    # Générer un commentaire dynamique pour le top 5
+    if not top5_category_counts.empty:
+        total_top5 = top5_category_counts.sum()
+        comments = ["Les vivriers sont répartis par types suivants :"]
+        for category, count in top5_category_counts.items():
+            percentage = (count / total_top5) * 100
+            comments.append(f"**{category}** : {percentage:.2f}%")
+
+        # Affichage des commentaires
+        st.markdown("<br>".join(comments), unsafe_allow_html=True)
+    else:
+        st.write("Aucune donnée disponible pour afficher la répartition des types d'étal.")
+
+
+
+
+
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown(
@@ -1514,7 +1596,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/habitss.png")
+# Version avec markdown (plus de contrôle sur le style)
+st.markdown("""
+    <div class="responsive-image-container">
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/brode.png"
+             alt="Broderie">
+    </div>
+""", unsafe_allow_html=True)
 st.write("")
 st.write("")
 
@@ -1689,16 +1777,22 @@ st.markdown(
     }
     </style>
     <div class="special-box">
-        <h4>TOP 3 ACTIVITES : RESTAURANTS/MAQUIS/CAVES/BUVETTES</h4>
+        <h4>TOP 3 ACTIVITES : COUTURE</h4>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-st.image("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/NOURRITURE.jpeg")
+# Version avec markdown (plus de contrôle sur le style)
+st.markdown("""
+    <div class="responsive-image-container">
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/tailleur.jpeg"
+             alt="Tailleur">
+    </div>
+""", unsafe_allow_html=True)
 
 
-produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
+produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
 
 number_of_rows_produits_agricoles = len(produits_agricoles_data)
 
@@ -1712,20 +1806,20 @@ average_employee_produits_agricoles = produits_agricoles_data['ages'].mean()
 
 col1, col2, tired = st.columns(3)
 with col1:
-    st.metric(label="Nombre d'enregistrements (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=number_of_rows_produits_agricoles)
+    st.metric(label="Nombre d'enregistrements (COUTURE)", value=number_of_rows_produits_agricoles)
 with col2:
-    st.metric(label="Moyenne d'Âge (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_age_produits_agricoles:,.1f} ans")
+    st.metric(label="Moyenne d'Âge (COUTURE)", value=f"{average_age_produits_agricoles:,.1f} ans")
 with tired:
-    st.metric(label="Nombre d'employés moyen (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_age_produits_agricoles:,.1f}")
+    st.metric(label="Nombre d'employés moyen (COUTURE)", value=f"{average_age_produits_agricoles:,.1f}")
 
 
 col3, col4, eeh = st.columns(3)
 with col3:
-    st.metric(label="Chiffre d'Affaires Global (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
+    st.metric(label="Chiffre d'Affaires Global (COUTURE)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
 with col4:
-    st.metric(label="Moyenne du Chiffre d'Affaires (RESTAURANT/MAQUIS/CAVE/BUVETTE)", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
+    st.metric(label="Moyenne du Chiffre d'Affaires (COUTURE)", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
 
-produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
+produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
 
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
 

@@ -107,9 +107,6 @@ with col100:
     """, unsafe_allow_html=True)
 
 with col101:
-    st.write(" ")
-    st.write(" ")
-    st.write(" ")
     st.markdown(
         """
         <h4 style="font-weight: normal;">Le Projet d'enrôlement et d'identification des entreprenants de Côte d'Ivoire a été lancé le 04 septembre 2024, après sa phase pilote à San Pedro. Cette initiative du Ministère du Commerce et de l'Industrie vise à pallier les insuffisances dues à l'absence de base de sondage pour les entreprises du secteur informel et à la mise à jour incomplète des informations sur ces entreprises. Les objectifs principaux de ce projet incluent la création d'une base de données exhaustive et la mise en place de solutions adaptées.</h4>
@@ -1188,7 +1185,11 @@ category_counts = data_filtree["tranche_age"].value_counts()
 col111, col55 = st.columns([1.5, 2])
 
 with col111:
-    st.write("")  # Garde l'espace
+    st.write("") # Garde l'espace
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     st.markdown("""
         <div class="responsive-image-container">
             <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/jeune_.jpeg"
@@ -1283,6 +1284,9 @@ with col43:
     st.write("")
     st.write("")
     st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
 
     # Version avec markdown (plus de contrôle sur le style)
     st.markdown("""
@@ -1336,6 +1340,9 @@ st.markdown("""
              alt="ETALL">
     </div>
 """, unsafe_allow_html=True)
+st.write("")
+st.write("")
+
 
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
@@ -1492,6 +1499,10 @@ with col62:
         st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
 
+st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
+
+st.subheader("Zoom sur la vente sur étal")
+st.write("")
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
 
@@ -1508,7 +1519,7 @@ with column2:
         names=top5_category_counts.index,  # Top 5 des catégories
         values=top5_category_counts.values,  # Quantités pour chaque catégorie
         hole=0.3,  # Pour un donut chart
-        title="TOP 5 DES TYPES D'ETALS"
+        title="DIFFERENTS TYPES D'ETALS"
     )
     figetal.update_traces(textinfo='none', hoverinfo='label+percent')
     st.plotly_chart(figetal)
@@ -1521,7 +1532,7 @@ with column1:
     # Générer un commentaire dynamique pour le top 5
     if not top5_category_counts.empty:
         total_top5 = top5_category_counts.sum()
-        comments = ["La répartition des 5 principaux types d'étals est la suivante :"]
+        comments = ["La répartition des types d'étals est la suivante :"]
         for category, count in top5_category_counts.items():
             percentage = (count / total_top5) * 100
             comments.append(f"**{category}** : {percentage:.2f}%")
@@ -1531,6 +1542,10 @@ with column1:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des types d'étal.")
 
+
+st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
+
+st.subheader("Zoom sur les produits vivriers")
 
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
@@ -1548,7 +1563,7 @@ with column4:
         names=top5_category_counts.index,  # Top 5 des catégories
         values=top5_category_counts.values,  # Quantités pour chaque catégorie
         hole=0.3,  # Pour un donut chart
-        title="TOP 5 DES VIVRIERS"
+        title="REPARTITION PAR TYPE DE VIVRIERS"
     )
     figviv.update_traces(textinfo='none', hoverinfo='label+percent')
     st.plotly_chart(figviv)
@@ -1790,6 +1805,9 @@ st.markdown("""
              alt="Tailleur">
     </div>
 """, unsafe_allow_html=True)
+
+st.write("")
+st.write("")
 
 
 produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]

@@ -784,9 +784,8 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-data["genre"] = data["sexe"].replace({
+data["genre"] = data["genre"].str.lower().replace({
     "feminin": "Feminin",
-    "FEMININ": "Feminin",
     "masculin": "Masculin"
 })
 

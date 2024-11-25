@@ -301,7 +301,7 @@ st.markdown("""
 )
 
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLAST.csv"
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLASTLAST.csv"
 cols = ["commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type","type etal","type vivrier"]
 
 @st.cache_data
@@ -635,57 +635,13 @@ with col38:
 
     st.plotly_chart(fig1)
 
-# Placer le commentaire dans la colonne de droite (col37)
-with col37:
-    # Ajouter des lignes vides
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction du stade de maturité est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
-
-
-stage_options = data_filtree['stade_de_maturite'].unique()
-selected_stage = st.selectbox("Sélectionnez un stade", stage_options)
 
 col39, col40 = st.columns(2)
 
 
-filtered_df = data_filtree[data_filtree['stade_de_maturite'] == selected_stage]
 
 
-with col40:
-
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not filtered_df.empty:
-        # Calculer le top 5 des secteurs d'activité
-        top_sectors = filtered_df['activity_sector'].value_counts().head(5)
-
-        # Créer un commentaire dynamique
-        comments = [f"Le top 5 des activités de **{selected_stage}** est :"]
-        for sector, count in top_sectors.items():
-            comments.append(f"**{sector}** : {count} ({(count / len(filtered_df)) * 100:.2f}%)")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des secteurs d'activité.")
-
-figa = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"REPARTITION DES SECTEURS PAR STADE DE MATURITE")
+figa = px.pie(names='activity_sector', hole=0.4, title=f"REPARTITION DES SECTEURS PAR STADE DE MATURITE")
 
 figa.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
 

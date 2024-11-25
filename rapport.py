@@ -225,7 +225,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/AGENTSVSPERF3.csv"
+file_path1 = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/ayidates.csv"
 data1 = pd.read_csv(file_path1)
 
 df1 = pd.DataFrame(data1)
@@ -302,16 +302,12 @@ st.markdown("""
 
 
 file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLASTLAST.csv"
-cols = ["commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type","type etal","type vivrier"]
-
-@st.cache_data
-def load_data(file_path, sheet_name, cols):
-    return pd.read_csv(file_path, usecols=cols)
 
 
-data = pd.read_csv(file_path, usecols=cols)
 
-df = pd.read_csv(file_path, usecols=cols)
+data = pd.read_csv(file_path)
+
+df = pd.read_csv(file_path)
 
 remplacements = {
     'très petite': 'Très petite',

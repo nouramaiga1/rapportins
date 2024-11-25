@@ -390,7 +390,7 @@ st.markdown(
     }
     </style>
     <div class="custom-box">
-        <h4>UNE MAJORITE SANS DOCUMENT D'IDENTITE</h4>
+        <h5>LES HABITUDES DE NOS ENTREPRENANTS</h5>
     </div>
     """,
     unsafe_allow_html=True
@@ -408,7 +408,7 @@ if not category_counts.empty:
     category_counts = category_counts.groupby(category_counts.index).sum()
 
     # Créer la figure après avoir fusionné les catégories
-    cola1, cola2 = st.columns(2)
+    cola1, cola2, baf = st.columns(3)
 
     figu = px.pie(
         names=category_counts.index,  # Catégories uniques
@@ -417,170 +417,87 @@ if not category_counts.empty:
         title="REPARTITION PAR DOCUMENT D'IDENTITE"
     )
 
+    figu.update_layout(
+        width=500,  # Largeur du graphe
+        height=400,  # Hauteur du graphe
+        title_font=dict(size=11)  # Taille de la police du titre
+    )
+
+
     figu.update_traces(textinfo='none', hoverinfo='label+percent')
+
+    category_counts = data_filtree["terminal_type"].value_counts()
+
+    ah = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title="TYPE DE TELEPHONE DES ENTREPENANTS"
+    )
+
+    ah.update_layout(
+        width=500,  # Largeur du graphe
+        height=400,  # Hauteur du graphe
+        title_font=dict(size=11)  # Taille de la police du titre
+    )
+    ah.update_traces(textinfo='none', hoverinfo='label+percent')
+
+    category_counts = data_filtree["is_cnps_declared"].value_counts()
+    figcnps = px.pie(
+        names=category_counts.index,  # Catégories uniques
+        values=category_counts.values,  # Quantités associées à chaque catégorie
+        hole=0.3,  # Pour un donut chart (optionnel)
+        title="STATUT CNPS"
+    )
+    figcnps.update_layout(
+        width=500,  # Largeur du graphe
+        height=400,  # Hauteur du graphe
+        title_font=dict(size=11)  # Taille de la police du titre
+    )
+
+    figcnps.update_traces(textinfo='none', hoverinfo='label+percent')
+
+
 
     with cola2:
         st.plotly_chart(figu)
+        st.plotly_chart(ah)
 
     with cola1:
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
+        st.markdown("""
+            <style>
+                .responsive-image-container {
+                    height: 100%; /* Occuper toute la hauteur disponible de la colonne */
+                    display: flex;
+                    justify-content: center; /* Centrer horizontalement */
+                    align-items: center; /* Centrer verticalement */
+                }
+                .responsive-image-container img {
+                    height: 100%; /* Prend toute la hauteur disponible dans la colonne */
+                    width: auto; /* Ajuste la largeur automatiquement pour conserver les proportions */
+                    object-fit: cover; /* Recadre si nécessaire */
+                }
+            </style>
+            <div class="responsive-image-container">
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/femmesouriante.jpeg"
+                    alt="Image Tailleur">
+            </div>
+        """, unsafe_allow_html=True)
+
+
+    with baf:
+        st.plotly_chart(figcnps)
 
 
         # Calculer le total pour les pourcentages
         total = category_counts.sum()
 
-        st.write("La grade partie des entreprenants n'ont aucun document d'identité lors de l'enrôlement.")
-        st.write("Lorsqu'ils en ont, ils présentent dans :")
-
-        ordered_categories = ['CNI', 'ATTESTATION', 'PASSEPORT']
-
-        # Créer un commentaire dynamique
-        comments = []
-        for category in ordered_categories:
-            if category in category_counts:
-                count = category_counts[category]
-                percentage = (count / total) * 100
-                comments.append(f"**{percentage:.2f}%** des cas : **{category}**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = "<br>".join(comments)
-        st.markdown(commentaire, unsafe_allow_html=True)
-else:
-    st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+        st.write("La grande partie des entreprenants n'ont aucun document d'identité lors de l'enrôlement.")
+        st.write("La plupart du temps, ils ne déclarent pas leurs activités à la CNPS.")
+        st.write("Il sont familiers aux technologies mobiles, la majorité ayant un smartphone.")
 
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DES ENTREPRENANTS FAMILIERS DES TECHNOLOGIES MOBILES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-category_counts = data_filtree["terminal_type"].value_counts()
-
-bof, baf = st.columns(2)
-
-ah = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="TYPE DE TELEPHONE DES ENTREPENANTS"
-)
-
-ah.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with baf:
-    st.plotly_chart(ah)
-
-with bof:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("Les entreprenants ont pour la grande majorité des smartphones. En terme de représentation, on a :")
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = []
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : **{percentage:.2f}%**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = " et ".join(comments)
-        st.markdown(commentaire)
-    else:
-        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
-
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
-
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DES ACTIVITES EN GRANDE PARTIE NON DECLAREES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-category_counts = data_filtree["is_cnps_declared"].value_counts()
-
-column5, column6 = st.columns(2)
-
-figcnps = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="STATUT CNPS"
-)
-
-figcnps.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with column6:
-    st.plotly_chart(figcnps)
-
-with column5:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = []
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"Les **{category}S** sont représentés à **{percentage:.2f}%**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = " et ".join(comments)
-        st.markdown(commentaire)
-    else:
-        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)

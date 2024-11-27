@@ -94,6 +94,90 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown(
+     """
+    <style>
+    .responsive-image-0{
+        width: 100%; /* Ajuste à la largeur du conteneur */
+        height: 1000px; /* Hauteur fixe */
+        object-fit: cover; /* Remplit la hauteur spécifiée */
+    }
+        .responsive-image-1 {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+        .responsive-image-2 {
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+    }
+        .responsive-image-3 {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+        .responsive-image-4 {
+        width: 100%;
+        height: 800px;
+        object-fit: cover;
+    }
+        .responsive-image-5 {
+        width: 100%;
+        height: 1300px;
+        object-fit: cover;
+    }
+        .responsive-image-6 {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+        .responsive-image-7 {
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+    }    .responsive-image-8 {
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+    }
+        .responsive-image-9 {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+        .responsive-image-10 {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+        .responsive-image-11 {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+        .responsive-image-12 {
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+    }
+        .responsive-image-13 {
+        width: 100%;
+        height: 1000px;
+        object-fit: cover;
+    }
+        .responsive-image-14 {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+    </style>
+
+
+    """,
+            unsafe_allow_html=True
+        )
+
 # Création des colonnes avec ratio responsive
 col100, col101 = st.columns([2.5, 1.75])
 
@@ -157,51 +241,61 @@ st.markdown(
 
 # Insérer le premier et deuxième paragraphe dans la première colonne
 with col31:
-    st.markdown(
-        """
-        <div class="rounded-box">
-            <h2>1. Contexte et objectifs globaux</h2>
-            <p>Le projet d’identification et d’enrôlement des entreprenants en Côte d'Ivoire s'aligne avec la vision du Président Alassane Ouattara pour une croissance économique plus inclusive.</p>
-            <p>Cette opération vise à renforcer l'économie nationale en intégrant les entreprises informelles. Ces entreprises pourront ainsi contribuer aux cotisations sociales (CMU, CNPS), accéder à des financements, des produits d'assurance, des services digitaux, et respecter la réglementation du travail.</p>
-        </div>
-        <div class="rounded-box">
-            <h2>3. Population cible de l’enrôlement</h2>
-            <p>La population ciblée par ce projet comprend toute personne exerçant des opérations économiques non enregistrées et non règlementées par l’Etat. Ces activités incluent, par exemple, les artisans, les commerçants de petits magasins, les tailleurs, les coiffeurs, et les travailleurs indépendants dans divers secteurs. Toutefois, ce projet exclut les vendeurs ambulants et toute personne géographiquement instable. L'exclusion de ces groupes vise à concentrer les efforts sur des groupes plus facilement intégrables et stabilisables dans le cadre du projet.</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    texte1 = st.container(border=True)
+    with texte1:
+        st.write(
+            """
+            ### 1. Contexte et objectifs globaux
+
+            Le projet d’identification et d’enrôlement des entreprenants en Côte d'Ivoire s'aligne avec la vision du Président Alassane Ouattara pour une croissance économique plus inclusive.
+
+            Cette opération vise à renforcer l'économie nationale en intégrant les entreprises informelles. Ces entreprises pourront ainsi contribuer aux cotisations sociales (CMU, CNPS), accéder à des financements, des produits d'assurance, des services digitaux, et respecter la réglementation du travail.
+
+            """
+        )
+        st.write("")
+
+    texte3 = st.container(border=True)
+    with texte3:
+        st.write(
+            """
+            ### 3. Population cible de l’enrôlement
+            La population ciblée par ce projet comprend toute personne exerçant des opérations économiques non enregistrées et non règlementées par l’Etat. Ces activités incluent, par exemple, les artisans, les commerçants de petits magasins, les tailleurs, les coiffeurs, et les travailleurs indépendants dans divers secteurs. Toutefois, ce projet exclut les vendeurs ambulants et toute personne géographiquement instable. L'exclusion de ces groupes vise à concentrer les efforts sur des groupes plus facilement intégrables et stabilisables dans le cadre du projet.
+            """
+        )
+
 
 # Insérer le troisième et quatrième paragraphe dans la deuxième colonne
 with col32:
-    st.markdown(
-        """
-        <div class="rounded-box">
-            <h2>2. Objectifs spécifiques de la phase pilote</h2>
-            <p>Les objectifs de cette première phase dans la ville de San Pédro ont été :</p>
-            <ul>
-                <li>La validation des méthodologies et des processus</li>
-                <li>L'évaluation des outils et technologies utilisées</li>
-                <li>La formation du personnel</li>
-                <li>L'identification de problèmes liés à l'enrôlement et des goulots d'étranglement</li>
-                <li>La planification des ajustements nécessaires</li>
-            </ul>
-        </div>
-        <div class="rounded-box">
-            <h2>4. Procédures de collecte de données</h2>
-            <p>Lors de la collecte, l'agent identificateur :</p>
-            <ul>
-                <li>Se présente sur le lieu d'activité de l'entreprenant</li>
-                <li>Collecte les informations de l'entreprenant (KYC) et de l'activité (KYB)</li>
-                <li>Renseigne le formulaire</li>
-                <li>Collecte les coordonnées GPS de l'activité</li>
-                <li>Prend une photo de l'entreprenant et de l'activité</li>
-                <li>Délivre une carte entreprenant pour chaque activité</li>
-            </ul>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    texte2 = st.container(border=True)
+    with texte2:
+        st.write(
+            """
+            ### 2. Objectifs spécifiques de la phase pilote
+            Les objectifs de cette première phase dans la ville de San Pédro ont été :
+            - La validation des méthodologies et des processus
+            - L'évaluation des outils et technologies utilisées
+            - La formation du personnel
+            - L'identification de problèmes liés à l'enrôlement et des goulots d'étranglement
+            - La planification des ajustements nécessaires
+            """
+        )
+
+    texte4 = st.container(border=True)
+    with texte4:
+        st.write(
+            """
+            ### 4. Procédures de collecte de données
+            Lors de la collecte, l'agent identificateur :
+            - Se présente sur le lieu d'activité de l'entreprenant
+            - Collecte les informations de l'entreprenant (KYC) et de l'activité
+            - Renseigne le formulaire
+            - Collecte les coordonnées GPS de l'activité
+            - Prend une photo de l'entreprenant et de l'activité
+            - Délivre une carte entreprenant pour chaque activité
+            """
+        )
+
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
@@ -212,6 +306,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+
 
 
 
@@ -302,503 +397,347 @@ with col4:
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-
+#Mon container
 st.markdown(
     """
     <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
+    .thick-border-container {
+        border: 5px solid #4CAF50; /* Thicker border */
+        border-radius: 15px; /* Optional: rounded corners */
+        padding: 20px; /* Padding inside the container */
+        margin: 10px 0; /* Space outside the container */
+        background-color: #F2F3F4; /* Optional: background color */
     }
     </style>
-    <div class="custom-box">
-        <h4>UNE MAJORITE SANS DOCUMENT D'IDENTITE</h4>
-    </div>
     """,
     unsafe_allow_html=True
 )
-category_counts = data_filtree["Entrepreneur identity_document_type"].value_counts()
 
-data['Entrepreneur identity_document_type'] = data['Entrepreneur identity_document_type'].replace({'passeport': 'PASSEPORT'})
 
-# Assurez-vous de commencer par fusionner les catégories avant de créer la figure
-if not category_counts.empty:
-    # Fusionner "passeport" et "PASSEPORT"
-    category_counts.index = category_counts.index.str.replace("passeport", "PASSEPORT", case=False)
 
-    # Recalculer les totaux pour les catégories combinées
-    category_counts = category_counts.groupby(category_counts.index).sum()
+habitudes = st.container()
 
-    # Créer la figure après avoir fusionné les catégories
-    cola1, cola2 = st.columns(2)
+with habitudes:
+    st.markdown("<h2>Les habitudes de nos entreprenants</h2>", unsafe_allow_html=True)
 
-    figu = px.pie(
+    category_counts = data_filtree["Entrepreneur identity_document_type"].value_counts()
+
+    data['Entrepreneur identity_document_type'] = data['Entrepreneur identity_document_type'].replace({'passeport': 'PASSEPORT'})
+
+    # Assurez-vous de commencer par fusionner les catégories avant de créer la figure
+    if not category_counts.empty:
+        # Fusionner "passeport" et "PASSEPORT"
+        category_counts.index = category_counts.index.str.replace("passeport", "PASSEPORT", case=False)
+
+        # Recalculer les totaux pour les catégories combinées
+        category_counts = category_counts.groupby(category_counts.index).sum()
+
+        # Créer la figure après avoir fusionné les catégories
+        cola1, cola2,bah = st.columns(3)
+
+
+        figu = px.pie(
+            names=category_counts.index,  # Catégories uniques
+            values=category_counts.values,  # Quantités associées à chaque catégorie
+            hole=0.3,  # Pour un donut chart (optionnel)
+            title="REPARTITION PAR DOCUMENT D'IDENTITE"
+        )
+
+        category_counts = data_filtree["is_cnps_declared"].value_counts()
+
+        ah = px.pie(
         names=category_counts.index,  # Catégories uniques
         values=category_counts.values,  # Quantités associées à chaque catégorie
         hole=0.3,  # Pour un donut chart (optionnel)
-        title="REPARTITION PAR DOCUMENT D'IDENTITE"
+        title="STATUT CNPS"
     )
+        ah.update_traces(textinfo='none', hoverinfo='label+percent')
 
-    figu.update_traces(textinfo='none', hoverinfo='label+percent')
-
-    with cola2:
-        st.plotly_chart(figu)
-
-    with cola1:
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
-        st.write("")  # Ajout d'espaces vides
-
-
-        # Calculer le total pour les pourcentages
-        total = category_counts.sum()
-
-        st.write("La grade partie des entreprenants n'ont aucun document d'identité lors de l'enrôlement.")
-        st.write("Lorsqu'ils en ont, ils présentent dans :")
-
-        ordered_categories = ['CNI', 'ATTESTATION', 'PASSEPORT']
-
-        # Créer un commentaire dynamique
-        comments = []
-        for category in ordered_categories:
-            if category in category_counts:
-                count = category_counts[category]
-                percentage = (count / total) * 100
-                comments.append(f"**{percentage:.2f}%** des cas : **{category}**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = "<br>".join(comments)
-        st.markdown(commentaire, unsafe_allow_html=True)
-else:
-    st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+        category_counts = data_filtree["terminal_type"].value_counts()
+        figcnps = px.pie(
+        names=category_counts.index,  # Catégories uniques
+        values=category_counts.values,  # Quantités associées à chaque catégorie
+        hole=0.3,  # Pour un donut chart (optionnel)
+        title="TYPE DE TELEPHONE PORTABLE"
+    )
+        figu.update_traces(textinfo='none', hoverinfo='label+value')
 
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DES ENTREPRENANTS FAMILIERS DES TECHNOLOGIES MOBILES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-category_counts = data_filtree["terminal_type"].value_counts()
+        with cola2:
+            figudisp = st.container(border=True)
+            with figudisp:
+                st.plotly_chart(figu)
+            ahdisp = st.container(border=True)
+            with ahdisp:
+                st.plotly_chart(ah)
 
-bof, baf = st.columns(2)
 
-ah = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="TYPE DE TELEPHONE DES ENTREPENANTS"
-)
+        with cola1:
+            st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/femmesouriante.jpeg" class="responsive-image-0">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-ah.update_traces(textinfo='none', hoverinfo='label+percent')
 
-with baf:
-    st.plotly_chart(ah)
 
-with bof:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("Les entreprenants ont pour la grande majorité des smartphones. En terme de représentation, on a :")
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
+        with bah:
+            figcnpsdisp = st.container(border=True)
+            with figcnpsdisp:
+                st.plotly_chart(figcnps)
 
-        # Créer un commentaire dynamique
-        comments = []
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : **{percentage:.2f}%**")
 
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = " et ".join(comments)
-        st.markdown(commentaire)
+            # Calculer le total pour les pourcentages
+            total = category_counts.sum()
+
+            st.write("La grande partie des entreprenants n'ont aucun document d'identité lors de l'enrôlement.")
+            st.write("Les entreprenants ont tendance à ne pas déclarer leurs activités à la CNPS.")
+            st.write("Ils sont familiers des technologies mobiles, la majorité possédant des smartphones.")
+
+
     else:
         st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
 
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
-
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DES ACTIVITES EN GRANDE PARTIE NON DECLAREES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-category_counts = data_filtree["is_cnps_declared"].value_counts()
-
-column5, column6 = st.columns(2)
-
-figcnps = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="STATUT CNPS"
-)
-
-figcnps.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with column6:
-    st.plotly_chart(figcnps)
-
-with column5:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = []
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"Les **{category}S** sont représentés à **{percentage:.2f}%**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = " et ".join(comments)
-        st.markdown(commentaire)
-    else:
-        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
-
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+    st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DIFFERENTS SECTEURS D'ACTIVITES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+secteurs = st.container()
 
-category_counts = data_filtree["activity_sector"].value_counts()
+with secteurs :
 
-cola5, cola6 = st.columns(2)
+    st.markdown("<h2>Une multitude de secteurs d'activité</h2>", unsafe_allow_html=True)
 
-with cola5:
-    st.write("")
-    st.write("")
-    st.write("")
+    # Use Streamlit's Native `st.container`
 
-    figure = px.pie(
-        names=category_counts.index,  # Catégories uniques
-        values=category_counts.values,  # Quantités associées à chaque catégorie
-        hole=0.3,  # Pour un donut chart (optionnel)
-        title=f"REPARTITION PAR SECTEUR D'ACTIVITE"
-    )
+    var1, var2, var3 = st.columns([1.5, 1, 1])
 
-    figure.update_traces(textinfo='none', hoverinfo='label+percent')
-    figure.update_layout(showlegend=False)
+    with var2:
+            category_counts = data_filtree["activity_sector"].value_counts()
+            # Generate the Chart
+            figure = px.pie(
+            names=category_counts.index,
+            values=category_counts.values,
+            hole=0.3,
+            title="REPARTITION PAR SECTEUR D'ACTIVITE"
+            )
+            figure.update_traces(textinfo='none', hoverinfo='label+percent')
+            figure.update_layout(showlegend=False)
+            vari2 = st.container(border=True)
+            with vari2:
+                st.plotly_chart(figure)
 
-    st.plotly_chart(figure)
 
-# Calculer le top 5 des secteurs d'activité
-top5_sectors = category_counts.nlargest(5)
+    with var1:
+        vari1 = st.container(border=True)
+        with vari1:
+            # Calculer le top 5 des secteurs d'activité
+            top5_sectors = category_counts.nlargest(5)
 
-# Calculer le nombre d'employés moyen pour chaque secteur du top 5
-average_employees_per_sector = {
-    sector: data_filtree[data_filtree['activity_sector'] == sector]['employees_count'].mean()
-    for sector in top5_sectors.index
-}
+            # Calculer le nombre d'employés moyen pour chaque secteur du top 5
+            average_employees_per_sector = {
+                sector: data_filtree[data_filtree['activity_sector'] == sector]['employees_count'].mean()
+                for sector in top5_sectors.index
+            }
 
-# Calculer le total pour obtenir les pourcentages
-total_entries = category_counts.sum()
-top5_percentages = (top5_sectors / total_entries) * 100
+            # Calculer le total pour obtenir les pourcentages
+            total_entries = category_counts.sum()
+            top5_percentages = (top5_sectors / total_entries) * 100
 
-# Créer le texte dynamique pour le top 5
-top5_list = [
-    f"- **{sector}** : {percentage:.2f}%"
-    for sector, percentage in zip(top5_sectors.index, top5_percentages)
-]
-top5_text = "\n".join(top5_list)  # Joindre les éléments avec des sauts de ligne HTML
+            # Créer le texte dynamique pour le top 5
+            top5_list = [
+                f"- **{sector}** : {percentage:.2f}%"
+                for sector, percentage in zip(top5_sectors.index, top5_percentages)
+            ]
+            top5_text = "\n".join(top5_list)  # Joindre les éléments avec des sauts de ligne HTML
 
-# Commentaire final
-commentaire = f"Les principaux secteurs d'activité sont :\n\n{top5_text}\n\n"
+            # Commentaire final
+            commentaire = f"Les principaux secteurs d'activité sont :\n\n{top5_text}\n\n"
 
-# Espace avant le nombre moyen d'employés
-st.write("\n" * 3)  # Ajoute 3 lignes vides
+            # Espace avant le nombre moyen d'employés
+            st.write("\n" * 3)  # Ajoute 3 lignes vides
 
-# Afficher le commentaire des secteurs
-with cola6:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.markdown(commentaire)
-    st.write("")
 
-    # Afficher le nombre moyen d'employés pour les secteurs du top 5
-    average_employees_text = "\n".join(
-    [f"- **{sector}** : {average_employees_per_sector[sector]:.2f} employés" for sector in top5_sectors.index]
-    )
-    st.markdown(f"Le nombre moyen d'employés pour ces secteurs est :\n{average_employees_text}")
+            st.write("")
+            st.markdown(commentaire)
+            st.write("")
 
-st.markdown('</div>', unsafe_allow_html=True)
+            # Afficher le nombre moyen d'employés pour les secteurs du top 5
+            average_employees_text = "\n".join(
+            [f"- **{sector}** : {average_employees_per_sector[sector]:.2f} employés" for sector in top5_sectors.index]
+            )
+            st.markdown(f"Le nombre moyen d'employés pour ces secteurs est :\n{average_employees_text}")
+
+
+    with var3:
+         st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/marchegeneral.png" class="responsive-image-1">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 
 
 
 
 
+    st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
+
+    st.markdown("<h2>Des activités pour la plupart matures</h2>", unsafe_allow_html=True)
+
+    category_counts = data_filtree["stade_de_maturite"].value_counts()
+
+    col37, col38 = st.columns([1, 2])
+
+    with col37:
+        st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/mcher.jpeg" class="responsive-image-2">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+
+    with col38:
+        kol1, kol2 = st.columns(2)
+        with kol1:
+            fig1disp =st.container(border=True)
+            fig1 = px.pie(
+            names=category_counts.index,  # Catégories uniques
+            values=category_counts.values,  # Quantités associées à chaque catégorie
+            hole=0.3,  # Pour un donut chart (optionnel)
+            title=f"REPARTITION PAR STADE DE MATURITE"
+        )
+            fig1.update_layout(showlegend=False, width=450, height=450)
+            fig1.update_traces(textinfo='none', hoverinfo='label+percent')
+            with fig1disp:
+                st.plotly_chart(fig1)
+
+        with kol2:
+            kol2disp = st.container(border=True)
+            with kol2disp:
+                st.write("Le pourcentage élevé d'activités matures montre qu'une part importante des entreprises a su perdurer, ce qui est souvent le signe d'une certaine résilience et d'une adaptabilité aux conditions du marché.")
+                st.write("Les activités établies entre 2 et 5 ans représentent les entreprises qui ont dépassé les premières phases critiques de démarrage et qui sont en phase de consolidation. Cela indique une bonne stabilité pour les entreprises qui réussissent à passer le cap des deux premières années.")
+                st.write("La présence des activités récentes indique un certain dynamisme entrepreneurial avec un nombre significatif de nouvelles entreprises. Il pourrait aussi refléter un environnement économique favorable à la création de nouvelles activités.")
+
+
+        separ1, separ2, separ3 = st.columns(3)
+
+        with separ1:
+            figadisp = st.container(border=True)
+            filtered_df = df[df["stade_de_maturite"] == "Moins de 2 ans"]
+            figa = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"MOINS DE DEUX ANS")
+            figa.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+            figa.update_layout(showlegend=False, width=400, height=400)
+            with figadisp:
+                st.plotly_chart(figa)
+
+
+        with separ2:
+            figentredisp = st.container(border=True)
+            filtered_df = df[df["stade_de_maturite"] == "Entre 2 et 5 ans"]
+            figentre = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"ENTRE DEUX ET CINQ ANS")
+            figentre.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+            figentre.update_layout(showlegend=False, width=400, height=400)
+            with figentredisp:
+                st.plotly_chart(figentre)
+
+
+        with separ3:
+            figplusdisp = st.container(border=True)
+            filtered_df = df[df["stade_de_maturite"] == "Plus de 5 ans"]
+            figplus = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"PLUS DE CINQ ANS")
+            figplus.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+            figplus.update_layout(showlegend=False, width=400, height=400)
+            with figplusdisp :
+                st.plotly_chart(figplus)
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DIFFERENTS STADES DE MATURITE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-category_counts = data_filtree["stade_de_maturite"].value_counts()
-
-col37, col38 = st.columns(2)
-
-with col38:
-
-    fig1 = px.pie(
-        names=category_counts.index,  # Catégories uniques
-        values=category_counts.values,  # Quantités associées à chaque catégorie
-        hole=0.3,  # Pour un donut chart (optionnel)
-        title=f"REPARTITION PAR STADE DE MATURITE"
-    )
-
-    fig1.update_traces(textinfo='none', hoverinfo='label+percent')
-
-    st.plotly_chart(fig1)
-
-# Placer le commentaire dans la colonne de droite (col37)
-with col37:
-    # Ajouter des lignes vides
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction du stade de maturité est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
 
-stage_options = data_filtree['stade_de_maturite'].unique()
-selected_stage = st.selectbox("Sélectionnez un stade", stage_options)
+st.markdown("<h2>Une majorité de commerces</h2>", unsafe_allow_html=True)
 
-col39, col40 = st.columns(2)
-
-
-filtered_df = data_filtree[data_filtree['stade_de_maturite'] == selected_stage]
-
-
-with col40:
-
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not filtered_df.empty:
-        # Calculer le top 5 des secteurs d'activité
-        top_sectors = filtered_df['activity_sector'].value_counts().head(5)
-
-        # Créer un commentaire dynamique
-        comments = [f"Le top 5 des activités de **{selected_stage}** est :"]
-        for sector, count in top_sectors.items():
-            comments.append(f"**{sector}** : {count} ({(count / len(filtered_df)) * 100:.2f}%)")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des secteurs d'activité.")
-
-figa = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"REPARTITION DES SECTEURS PAR STADE DE MATURITE")
-
-figa.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
-
-figa.update_layout(showlegend=False)
-
-
-with col39:
-    st.plotly_chart(figa)
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
-
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>TYPES D'ACTIVITE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
 category_counts = data_filtree["form"].value_counts()
 
-col45, col46 = st.columns([1,2])
+col45, col46 = st.columns(2)
 
 fig2 = px.pie(
     names=category_counts.index,  # Catégories uniques
     values=category_counts.values,  # Quantités associées à chaque catégorie
     hole=0.3,  # Pour un donut chart (optionnel)
-    title="REPARTITON PAR TYPES D'ACTIVITE"
+    title="REPARTITON PAR TYPE D'ACTIVITE"
 )
 
 fig2.update_traces(textinfo='none', hoverinfo='label+percent')
 
 with col46:
-    st.plotly_chart(fig2)
+    fig2disp = st.container(border=True)
+    with fig2disp:
+        st.plotly_chart(fig2)
+        if not category_counts.empty:
+            # Calculer le total pour le pourcentage
+            total = category_counts.sum()
+
+            # Créer un commentaire dynamique
+            comments = []
+            for category, count in category_counts.items():
+                percentage = (count / total) * 100
+                comments.append(f"Les **{category}s** sont représentés à **{percentage:.2f}%**")
+
+            # Afficher le commentaire avec un retour à la ligne
+            commentaire = " et ".join(comments)
+            st.markdown(commentaire)
+        else:
+            st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
+
 
 with col45:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
 
-        # Créer un commentaire dynamique
-        comments = []
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"Les **{category}s** sont représentés à **{percentage:.2f}%**")
-
-        # Afficher le commentaire avec un retour à la ligne
-        commentaire = " et ".join(comments)
-        st.markdown(commentaire)
-    else:
-        st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/yaounde.jpeg" class="responsive-image-3">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 
 
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>DIFFERENTES TAILLES D'ACTIVITE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Une majorité de très petites activités enregistrées</h2>", unsafe_allow_html=True)
+
 
 
 category_counts = data_filtree["size"].value_counts()
 
-col47, col48 = st.columns(2)
+col47, col48 = st.columns([1,2])
+
+with col47:
+        st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/brode.png" class="responsive-image-14">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 fig3 = px.pie(
     names=category_counts.index,  # Catégories uniques
@@ -806,82 +745,138 @@ fig3 = px.pie(
     hole=0.3,  # Pour un doughnut chart
     title="REPARTITION PAR TAILLE D'ACTIVITE"
 )
-
+fig3.update_layout(showlegend=False, width=450, height=450)
 fig3.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col47:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-
-    # **Générer un commentaire dynamique basé sur le doughnut chart**
-
-    # Calculer le pourcentage de chaque taille d'activité
-    total_count = category_counts.sum()
-    size_percentages = (category_counts / total_count) * 100
-
-    # Créer une liste pour stocker les descriptions de chaque taille avec leur pourcentage
-    size_descriptions = [f"- **{size}** représente {percentage:.2f}% des activités."
-                     for size, percentage in zip(category_counts.index, size_percentages)]
-
-    # Joindre les descriptions en un texte complet
-    commentaire = "\n".join(size_descriptions)
-
-    definitions = """
-    ### Quelques définitions
-
-    **Taille d'activité :** On peut dire qu'une unité économique est dite :
-
-    - **Très petite** lorsque son CA est compris entre 1 XOF et 2 400 000 XOF.
-    - **Petite** lorsque son CA est compris entre 2 400 001 XOF et 3 600 000 XOF.
-    - **Moyenne** lorsque son CA est compris entre 3 600 001 XOF et 4 000 000 XOF.
-    - **Grande** lorsque son CA est supérieur à 4 000 000 XOF.
-    """
-    st.write(definitions)
 
 
 with col48:
-    st.plotly_chart(fig3)
-    st.markdown(f"La répartition des tailles d'activité est la suivante :\n\n{commentaire}")
+    kol8, kol9 = st.columns(2)
+    with kol8:
+        fig3disp = st.container(border=True)
+        with fig3disp:
+           st.plotly_chart(fig3)
+
+    with kol9:
+            definitionsdisp = st.container(border=True)
+    with definitionsdisp:
+        # **Générer un commentaire dynamique basé sur le doughnut chart**
+
+        # Calculer le pourcentage de chaque taille d'activité
+        total_count = category_counts.sum()
+        size_percentages = (category_counts / total_count) * 100
+
+        # Créer une liste pour stocker les descriptions de chaque taille avec leur pourcentage
+        size_descriptions = [f"- **{size}** représente {percentage:.2f}% des activités."
+                        for size, percentage in zip(category_counts.index, size_percentages)]
+
+        # Joindre les descriptions en un texte complet
+        commentaire = "\n".join(size_descriptions)
+
+        definitions = """
+        ### Quelques définitions
+
+        **Taille d'activité :** On peut dire qu'une unité économique est dite :
+
+        - **Très petite** lorsque son CA est compris entre 1 XOF et 2 400 000 XOF.
+        - **Petite** lorsque son CA est compris entre 2 400 001 XOF et 3 600 000 XOF.
+        - **Moyenne** lorsque son CA est compris entre 3 600 001 XOF et 4 000 000 XOF.
+        - **Grande** lorsque son CA est supérieur à 4 000 000 XOF.
+        """
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write(definitions)
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        # Calculer la répartition en pourcentage pour chaque secteur d'activité
+
+        filtered_df = df[df["size"] == "Très petite"]
+        sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélectionner le Top 5
+        total_activities = filtered_df.shape[0]
+        fig1000 = px.pie(
+            filtered_df,
+            names='activity_sector',
+            hole=0.4,
+            title=f"Très petites activités",
+        )
+        fig1000.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+        fig1000.update_layout(showlegend=False, width=400, height=400)
+
+        filtered_df = df[df["size"] == "Petite"]
+        sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélectionner le Top 5
+        total_activities = filtered_df.shape[0]
+        fig1001 = px.pie(
+            filtered_df,
+            names='activity_sector',
+            hole=0.4,
+            title=f"Petites activités",
+        )
+        fig1001.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+        fig1001.update_layout(showlegend=False, width=400, height=400)
+
+        filtered_df = df[df["size"] == "Moyenne"]
+        sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélectionner le Top 5
+        total_activities = filtered_df.shape[0]
+        fig1002 = px.pie(
+            filtered_df,
+            names='activity_sector',
+            hole=0.4,
+            title=f"Activités moyennes",
+        )
+        fig1002.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+        fig1002.update_layout(showlegend=False, width=400, height=400)
+
+        filtered_df = df[df["size"] == "Grande"]
+        sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélectionner le Top 5
+        total_activities = filtered_df.shape[0]
+        fig1003 = px.pie(
+            filtered_df,
+            names='activity_sector',
+            hole=0.4,
+            title=f"Grandes activités",
+        )
+        fig1003.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+        fig1003.update_layout(showlegend=False, width=400, height=400)
+
+kol10, kol11 = st.columns([1,2])
+with kol11:
+    figuresdisp = st.container(border=True)
+    with figuresdisp:
+        colx1, colx2 = st.columns(2)
+        with colx1:
+            st.plotly_chart(fig1000)
+            st.plotly_chart(fig1002)
+
+        with colx2:
+            st.plotly_chart(fig1001)
+            st.plotly_chart(fig1003)
+
+with kol10:
+         st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/marchegeneral.png" class="responsive-image-4">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>REPARTITION PAR GENRE:</h4>
-        <h5>Presqu'autant de femmes que d'hommes interrogés</h5>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
-st.markdown("""
-    <div class="responsive-image-container">
-        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/Affou.jpeg"
-             alt="Affou">
-    </div>
-""", unsafe_allow_html=True)
+st.markdown("<h2>Plus de femmes que d'hommes interrogés</h2>", unsafe_allow_html=True)
+
+kol12, kol13 = st.columns([1,2])
+
 
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
 
 category_counts = data_filtree["genre"].value_counts()
 
-col51, col52 = st.columns(2)
+
+col51, col52, kol14 = st.columns(3)
 
 colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
@@ -893,38 +888,18 @@ fig4 = px.pie(
     color_discrete_sequence=colors,
     title="REPARTITION PAR GENRE"
 )
-
-
 fig4.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col52:
-    st.plotly_chart(fig4)
+fig4.update_layout(showlegend=False, width=400, height=400)
 
 
-with col51:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    # Commentaire dynamique
-    commentaire = "La répartition par genre est la suivante :\n"
-    for genre, count in category_counts.items():
-        pourcentage = (count / category_counts.sum()) * 100
-        # Ajouter un séparateur de milliers avec un espace
-        commentaire += f"- **{genre}** : {'{:,.0f}'.format(count).replace(',', ' ')} ({pourcentage:.2f}%)\n"
-
-    st.write(commentaire)
 
 
-size_options = data_filtree['size'].unique()
-selected_size = st.selectbox("Sélectionnez une taille", size_options)
+df["genre"] = df["genre"].str.capitalize()
 
-col53, col54 = st.columns(2)
+
 colors1 = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
-filtered_df = data_filtree[data_filtree['size'] == selected_size]
+filtered_df = df[df['size'] == "Très petite"]
 
 
 # Calculate the percentages
@@ -932,80 +907,95 @@ feminin_percentage = (filtered_df[filtered_df['genre'] == 'Feminin'].shape[0] / 
 masculin_percentage = (filtered_df[filtered_df['genre'] == 'Masculin'].shape[0] / filtered_df.shape[0]) * 100
 
 # Add the annotation
-commentaire1 = f"Pour les **{selected_size}s** activités, on a **{feminin_percentage:.2f}% de femmes** et **{masculin_percentage:.2f}% d'hommes**"
 
-fig6 = px.pie(filtered_df, names='genre', hole=0.4, title=f"REPARTITION DES TAILLES D'ACTIVITE PAR GENRE",
+fig6 = px.pie(filtered_df, names='genre', hole=0.4, title=f"TRES PETITES ACTIVITES",
               color_discrete_sequence=colors1)
-
 fig6.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+fig6.update_layout(showlegend=False, width=400, height=400)
 
-with col54:
-    st.plotly_chart(fig6)
 
-with col53:
+filtered_df = df[df['size'] == "Petite"]
+
+petites = px.pie(filtered_df, names='genre', hole=0.4, title=f"PETITES ACTIVITES",
+              color_discrete_sequence=colors1)
+petites.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+petites.update_layout(showlegend=False, width=400, height=400)
+
+filtered_df = df[df['size'] == "Moyenne"]
+
+moyennes = px.pie(filtered_df, names='genre', hole=0.4, title="ACTIVITES MOYENNES",
+              color_discrete_sequence=colors1)
+moyennes.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+moyennes.update_layout(showlegend=False, width=400, height=400)
+filtered_df = df[df['size'] == "Grande"]
+
+grandes = px.pie(filtered_df, names='genre', hole=0.4, title="GRANDES ACTIVITES",
+              color_discrete_sequence=colors1)
+grandes.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
+grandes.update_layout(showlegend=False, width=400, height=400)
+
+with kol14:
+    fig4disp = st.container(border=True)
+    with fig4disp:
+       st.plotly_chart(fig4)
+    petitesdisp = st.container(border=True)
+    with petitesdisp:
+        st.plotly_chart(petites)
+    grandesdisp = st.container(border=True)
+    with grandesdisp:
+        st.plotly_chart(grandes)
+
+
+
+with col51:
+       st.markdown(
+            """
+            <div>
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/Affou.jpeg" class="responsive-image-5">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+with col52:
     st.write("")
     st.write("")
     st.write("")
     st.write("")
-    st.write(commentaire1)
-
-
-# Calculer la répartition en pourcentage pour chaque secteur d'activité
-sector_counts = filtered_df['activity_sector'].value_counts().head(5)  # Sélectionner le Top 5
-total_activities = filtered_df.shape[0]
-
-# Générer le commentaire pour le Top 5 des secteurs d'activité
-commenta = "Le top 5 des {}s activités est:\n".format(selected_size)
-for sector, count in sector_counts.items():
-    percentage = (count / total_activities) * 100
-    commenta += f"- **{sector}** : {percentage:.2f}%\n"
-
-
-fig1000 = px.pie(
-    filtered_df,
-    names='activity_sector',
-    hole=0.4,
-    title=f"Répartition des {selected_size}s activités par secteurs d'activité",
-)
-
-fig1000.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
-
-fig1000.update_layout(showlegend=False)
-
-colx1, colx2 = st.columns(2)
-with colx2:
-    st.plotly_chart(fig1000)
-with colx1:
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("Les femmes sont à la tête des très petites et petites activités.")
+    st.write("En revanche, lorsqu'il est question des activtés de tailles moyenne et grande, les hommes sont mieux représentés.")
     st.write("")
     st.write("")
     st.write("")
     st.write("")
     st.write("")
     st.write("")
-    st.write(commenta, unsafe_allow_html=True)
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    fig6disp = st.container(border=True)
+    with fig6disp:
+        st.plotly_chart(fig6)
+
+    moyennesdisp = st.container(border=True)
+    with moyennesdisp:
+            st.plotly_chart(moyennes)
+
+
+
+
+
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>FOCUS PAR GENRE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Focus par genre</h2>", unsafe_allow_html=True)
+
 
 genre_options = data_filtree['genre'].unique()
 selected_gender = st.selectbox("Sélectionnez un genre", genre_options)
@@ -1018,58 +1008,82 @@ average_ca = filtered_df['CA'].mean()
 average_age = filtered_df['ages'].mean()
 average_employee = filtered_df['employees_count'].mean()
 
-colonna, colie = st.columns(2)
-with colonna:
-    st.metric(label="Âge Moyen", value=f"{average_age:.1f} ans")
-
-with colie:
-    st.metric(label="Nombre d'enployés moyen", value=f"{average_employee:,.1f}")
-
-
-col5, col6 = st.columns(2)
-
-with col5:
-    st.metric(label="Chiffre d'Affaires Total", value=f"{total_ca:,.0f} FCFA")
-with col6:
-    st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_ca:,.0f} FCFA")
-
-
-
 fig5 = px.pie(filtered_df, names='activity_sector', hole=0.4, title=f"REPARTITION DES SECTEURS PAR GENRE")
 
 fig5.update_traces(textinfo='none', hovertemplate='%{label}: %{value}<extra></extra>')
 
-fig5.update_layout(showlegend=False)
-
-
-st.plotly_chart(fig5)
+fig5.update_layout(showlegend=False, width=400, height=400)
 
 
 
-# **Ajouter un commentaire dynamique pour le Top 5 des secteurs d'activité avec les pourcentages**
 
-# Compter le nombre d'occurrences par secteur d'activité
-sector_counts = filtered_df['activity_sector'].value_counts().reset_index()
-sector_counts.columns = ['Secteur', 'Nombre']  # Renommer les colonnes
+colonna, colie, kol17 = st.columns(3)
 
-# Calculer le total des occurrences pour calculer les pourcentages
-total_entries = sector_counts['Nombre'].sum()
+with colonna:
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/fillemarchee.png" class="responsive-image-6">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Ajouter une colonne 'Pourcentage' au DataFrame
-sector_counts['Pourcentage'] = (sector_counts['Nombre'] / total_entries) * 100
 
-# Trier les secteurs et sélectionner le Top 5
-top_5_sectors = sector_counts.head(5)
+with colie:
+    st.metric(label="Âge Moyen", value=f"{average_age:.1f} ans")
+    st.metric(label="Chiffre d'Affaires Total", value=f"{total_ca:,.0f} FCFA")
+    fig5disp = st.container(border=True)
+    with fig5disp:
+        st.plotly_chart(fig5)
 
-# Générer un commentaire dynamique basé sur le Top 5 avec pourcentages
-top_5_list = [f"- **{row['Secteur']}** : {row['Pourcentage']:.2f}%" for index, row in top_5_sectors.iterrows()]
-top_5_text = "\n".join(top_5_list)  # Joindre les éléments avec un saut de ligne
 
-# Commentaire final à afficher
-commentaire = f"Pour le genre **{selected_gender}**, voici les 5 principaux secteurs d'activité avec leur pourcentage :\n\n{top_5_text}"
+with kol17:
+    st.metric(label="Nombre d'enployés moyen", value=f"{average_employee:,.1f}")
+    st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_ca:,.0f} FCFA")
+    commentdisp = st.container(border=True)
+    with commentdisp:
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        # **Ajouter un commentaire dynamique pour le Top 5 des secteurs d'activité avec les pourcentages**
+        # Compter le nombre d'occurrences par secteur d'activité
+        sector_counts = filtered_df['activity_sector'].value_counts().reset_index()
+        sector_counts.columns = ['Secteur', 'Nombre']  # Renommer les colonnes
 
-# Afficher le commentaire sous forme de markdown
-st.markdown(commentaire)
+        # Calculer le total des occurrences pour calculer les pourcentages
+        total_entries = sector_counts['Nombre'].sum()
+
+        # Ajouter une colonne 'Pourcentage' au DataFrame
+        sector_counts['Pourcentage'] = (sector_counts['Nombre'] / total_entries) * 100
+
+        # Trier les secteurs et sélectionner le Top 5
+        top_5_sectors = sector_counts.head(5)
+
+        # Générer un commentaire dynamique basé sur le Top 5 avec pourcentages
+        top_5_list = [f"- **{row['Secteur']}** : {row['Pourcentage']:.2f}%" for index, row in top_5_sectors.iterrows()]
+        top_5_text = "\n".join(top_5_list)  # Joindre les éléments avec un saut de ligne
+
+        # Commentaire final à afficher
+        commentaire = f"Pour le genre **{selected_gender}**, voici les 5 principaux secteurs d'activité avec leur pourcentage :\n\n{top_5_text}"
+
+        # Afficher le commentaire sous forme de markdown
+        st.markdown(commentaire)
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+
+
+
+
+
+
+
+
 
 
 
@@ -1083,46 +1097,25 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 
-st.markdown(
-    """
-    <style>
-    .custom-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #fAfAfA;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="custom-box">
-        <h4>REPARTITION PAR TRANCHE D'AGE:</h4>
-        <h5>Une population d'entreprenants majoritairement jeune avec près de 59% de moins de 40ans</h5>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Des entreprenants jeunes</h2>", unsafe_allow_html=True)
 
 
 data['tranche_age'] = data['tranche_age']
 
 category_counts = data_filtree["tranche_age"].value_counts()
 
-col111, col55 = st.columns([1.5, 2])
+col111, col55, kol18 = st.columns(3)
 
 with col111:
-    st.write("") # Garde l'espace
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.markdown("""
-        <div class="responsive-image-container">
-            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/jeune_.jpeg"
-                 alt="Jeune">
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/jeune_.jpeg" class="responsive-image-7">
         </div>
-    """, unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True
+    )
+
 
 
 fig11 = px.pie(
@@ -1131,8 +1124,7 @@ fig11 = px.pie(
     hole=0.3,
     title="REPARTITION PAR TRANCHE D'AGE"
 )
-
-
+fig11.update_layout(showlegend=False)
 fig11.update_traces(textinfo='none', hoverinfo='label+percent')
 
 
@@ -1151,19 +1143,6 @@ average_caj = data_filtree_moins_de_40['CA'].mean()
 average_agej = data_filtree_moins_de_40['ages'].mean()
 average_employeej = data_filtree_moins_de_40['employees_count'].mean()
 
-with col55:
-    col41, col42 = st.columns(2)
-    with col41:
-        st.metric(label="Chiffre d'Affaires Total", value=f"{total_caj:,.0f} FCFA")
-        st.metric(label="Âge Moyen", value=f"{average_agej:.1f} ans")
-    with col42:
-        st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_caj:,.0f} FCFA")
-        st.metric(label="Nombre moyen d'employés", value=f"{average_employeej:,.1f}")
-    st.markdown("---")
-    st.plotly_chart(fig11)
-    st.write(commentaire)
-
-
 # Calculer la répartition des secteurs d'activité
 category_counts = data_filtree_moins_de_40['activity_sector'].value_counts()
 
@@ -1177,13 +1156,6 @@ fig13 = px.pie(
 
 fig13.update_traces(textinfo='none', hoverinfo='label+percent')
 fig13.update_layout(showlegend=False)
-
-
-
-
-
-col43, col44 = st.columns([1.5 ,2])
-
 
 # Convertir les données en DataFrame pour faciliter le traitement
 sector_counts = category_counts.reset_index()
@@ -1203,72 +1175,54 @@ top_5_list = [f"- **{row['Secteur']}** : {row['Pourcentage']:.2f}%" for index, r
 top_5_text = "\n".join(top_5_list)  # Joindre les éléments avec des sauts de ligne HTML
 
 # Commentaire final à afficher
-commentaire = f"Voici les 5 principaux secteurs d'activité exercés par les jeunes avec leur pourcentage:\n\n{top_5_text}"
+commentariot = f"Voici les 5 principaux secteurs d'activité exercés par les jeunes avec leur pourcentage:\n\n{top_5_text}"
 
-with col43:
-    # Garde les espaces verticaux
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
 
-    # Version avec markdown (plus de contrôle sur le style)
-    st.markdown("""
-        <div class="responsive-image-container">
-            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/fillemarchee.png"
-                 alt="Fille marché">
-        </div>
-    """, unsafe_allow_html=True)
-
-with col44:
+with col55:
+    st.metric(label="Chiffre d'Affaires Total", value=f"{total_caj:,.0f} FCFA")
+    st.metric(label="Âge Moyen", value=f"{average_agej:.1f} ans")
+    st.plotly_chart(fig11)
+    st.markdown(commentariot)
+with kol18:
+    st.metric(label="Moyenne des Chiffres d'Affaires", value=f"{average_caj:,.0f} FCFA")
+    st.metric(label="Nombre moyen d'employés", value=f"{average_employeej:,.1f}")
     st.write("")
-    st.markdown("---")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write(commentaire)
+    st.write("")
+    st.write("")
     st.write("")
     st.plotly_chart(fig13)
-    # Ajouter des lignes vides
-    st.write("")
 
-    # Commentaire final à afficher
-    commentaire = f"Voici les 5 principaux secteurs d'activité exercés par les jeunes avec leur pourcentage:\n\n{top_5_text}"
 
-    # Afficher le commentaire sous forme de markdown
-    st.markdown(commentaire)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .special-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #f5f5f5;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="special-box">
-        <h4>TOP 1 ACTIVITES : VENTE SUR ETAL</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Top 1 activité : Vente sur étal</h2>", unsafe_allow_html=True)
 
-# Version avec markdown (plus de contrôle sur le style)
-st.markdown("""
-    <div class="responsive-image-container">
-        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/ETALL.jpeg"
-             alt="ETALL">
-    </div>
-""", unsafe_allow_html=True)
-st.write("")
-st.write("")
+
 
 
 
@@ -1282,26 +1236,7 @@ average_ca_vente_sur_etal = vente_sur_etal_data['CA'].mean()
 
 average_age_vente_sur_etal = vente_sur_etal_data['ages'].mean()
 
-average_employee_vente_sur_etal = vente_sur_etal_data['employees_count'].mean()
-
 formatted_number_vente_sur_etal = f"{number_of_rows_vente_sur_etal:,.0f}".replace(",", " ")
-
-col1, col2, cola = st.columns(3)
-with col1:
-    st.metric(label="Nombre d'enregistrements (VENTE SUR ETAL)", value=formatted_number_vente_sur_etal)
-with col2:
-    st.metric(label="Moyenne d'Âge (VENTE SUR ETAL)", value=f"{average_age_vente_sur_etal:,.1f} ans")
-with cola:
-    st.metric(label="Nombre d'employés moyen (VENTE SUR ETAL)", value=f"{average_employee_vente_sur_etal:,.1f}")
-
-
-
-col3, col4, coly = st.columns(3)
-with col3:
-    st.metric(label="Chiffre d'Affaires Global (VENTE SUR ETAL)", value=f"{total_ca_vente_sur_etal:,.0f} FCFA")
-with col4:
-    st.metric(label="Moyenne du Chiffre d'Affaires (VENTE SUR ETAL)", value=f"{average_ca_vente_sur_etal:,.0f} FCFA")
-
 
 category_counts = vente_sur_etal_data["genre"].value_counts()
 
@@ -1313,7 +1248,7 @@ data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Femin
 
 category_counts = vente_sur_etal_data["genre"].value_counts()
 
-col01, col02 = st.columns(2)
+
 
 colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
@@ -1324,118 +1259,78 @@ fig001 = px.pie(
     color_discrete_sequence=colors,
     title="REPARTITION PAR GENRE"
 )
-
-
 fig001.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col02:
-    st.plotly_chart(fig001)
-
-
-with col01:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    # Commentaire dynamique
-    commentaire = "La répartition par genre des vendeurs sur étal est la suivante :\n"
-    for genre, count in category_counts.items():
-        pourcentage = (count / category_counts.sum()) * 100
-        # Ajouter un séparateur de milliers avec un espace
-        commentaire += f"- **{genre}** : {'{:,.0f}'.format(count).replace(',', ' ')} ({pourcentage:.2f}%)\n"
-
-    st.write(commentaire)
-
+fig001.update_layout(showlegend=False, width=400, height=400)
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
-
 category_counts = vente_sur_etal_data["tranche_age"].value_counts()
-
-col60, col61 = st.columns(2)
-
 fig52 = px.pie(
     names=category_counts.index,
     values=category_counts.values,
     hole=0.3,
     title="REPARTITION PAR TRANCHE D'AGE"
 )
-
-
 fig52.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col61:
-    st.plotly_chart(fig52)
-
-# Commentaire dynamique
-commentaire = "La répartition par tranche d'âge est la suivante :\n"
-for tranche_age, count in category_counts.items():
-    pourcentage = (count / category_counts.sum()) * 100
-    # Ajouter un séparateur de milliers avec un espace
-    commentaire += f"- **{pourcentage:.2f}%** des entreprenants interrogés, soit **{'{:,.0f}'.format(count).replace(',', ' ')}** ont **{tranche_age}**.\n"
-
-
-with col60:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write(commentaire)
+fig52.update_layout(showlegend=False, width=400, height=400)
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
-
 category_counts = vente_sur_etal_data["stade_de_maturite"].value_counts()
+fig1 = px.pie(
+     names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title=f"REPARTITION PAR STADE DE MATURITE"
+)
+fig1.update_traces(textinfo='none', hoverinfo='label+percent')
+fig1.update_layout(showlegend=False, width=400, height=400)
 
-col62, col63 = st.columns(2)
+col1, col2, cola = st.columns(3)
 
-with col63:
-    fig1 = px.pie(
-        names=category_counts.index,  # Catégories uniques
-        values=category_counts.values,  # Quantités associées à chaque catégorie
-        hole=0.3,  # Pour un donut chart (optionnel)
-        title=f"REPARTITION PAR STADE DE MATURITE"
+with col1:
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/ETALL.jpeg" class="responsive-image-8">
+        </div>
+        """,
+        unsafe_allow_html=True
     )
 
-    fig1.update_traces(textinfo='none', hoverinfo='label+percent')
-
+with col2:
+    st.metric(label="Nombre d'enregistrements (VENTE SUR ETAL)", value=formatted_number_vente_sur_etal)
+    st.metric(label="Chiffre d'Affaires Global (VENTE SUR ETAL)", value=f"{total_ca_vente_sur_etal:,.0f} FCFA")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("La vente sur étal, principale activité de nos entreprenants, est dominée par les femmes.")
+    st.write("Elle est exercée dans la grande partie des cas par les moins de 40 ans.")
+    st.write("La majorité des ventes sur étal ont plus de 5 ans, ce qui indique une pérennité des activités de ce secteur.")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     st.plotly_chart(fig1)
-
-# Placer le commentaire dans la colonne de gauche (col62)
-with col62:
-    # Ajouter des lignes vides
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction du stade de maturité est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
+with cola:
+    st.metric(label="Moyenne d'Âge (VENTE SUR ETAL)", value=f"{average_age_vente_sur_etal:,.1f} ans")
+    st.metric(label="Moyenne du Chiffre d'Affaires (VENTE SUR ETAL)", value=f"{average_ca_vente_sur_etal:,.0f} FCFA")
+    st.plotly_chart(fig001)
+    st.plotly_chart(fig52)
 
 
-st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
-
-st.subheader("Zoom sur la vente sur étal")
+st.subheader("Qu'est ce qui est vendu sur nos étals?")
 st.write("")
 
 vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
 
 category_counts = vente_sur_etal_data["type etal"].value_counts()
 
-column1, column2 = st.columns(2)
+column1, column2, kol19 = st.columns(3)
 
 with column2:
     # Limiter à un top 5 des catégories les plus fréquentes
@@ -1449,6 +1344,7 @@ with column2:
         title="DIFFERENTS TYPES D'ETALS"
     )
     figetal.update_traces(textinfo='none', hoverinfo='label+percent')
+    figetal.update_layout(showlegend=False)
     st.plotly_chart(figetal)
 
 with column1:
@@ -1469,8 +1365,16 @@ with column1:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des types d'étal.")
 
+with kol19:
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/tableafrica.png" class="responsive-image-10">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
 
 st.subheader("Zoom sur les produits vivriers")
 
@@ -1479,9 +1383,9 @@ vente_sur_etal_data = data[data["activity_sector"] == "VENTE SUR ETAL"]
 
 category_counts = vente_sur_etal_data["type vivrier"].value_counts()
 
-column3, column4 = st.columns(2)
+column3, column4, kol20 = st.columns(3)
 
-with column4:
+with column3:
     # Limiter à un top 5 des catégories les plus fréquentes
     top5_category_counts = category_counts.nlargest(5)
 
@@ -1493,9 +1397,10 @@ with column4:
         title="REPARTITION PAR TYPE DE VIVRIERS"
     )
     figviv.update_traces(textinfo='none', hoverinfo='label+percent')
+    figviv.update_layout(showlegend=False)
     st.plotly_chart(figviv)
 
-with column3:
+with column4:
     # Espacement visuel
     st.markdown("<br><br><br>", unsafe_allow_html=True)
 
@@ -1512,42 +1417,23 @@ with column3:
     else:
         st.write("Aucune donnée disponible pour afficher la répartition des types d'étal.")
 
-
+with kol20:
+    st.markdown(
+    """
+    <div>
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/leg.png" class="responsive-image-11">
+    </div>
+    """,
+    unsafe_allow_html=True
+    )
 
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .special-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #f5f5f5;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="special-box">
-        <h4>TOP 2 ACTIVITES : VETEMENTS/CHAUSSURES/ACCESSOIRES DE MODE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Top 2 activité : Vêtements, chaussures, accessoires de mode</h2>", unsafe_allow_html=True)
 
-# Version avec markdown (plus de contrôle sur le style)
-st.markdown("""
-    <div class="responsive-image-container">
-        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/brode.png"
-             alt="Broderie">
-    </div>
-""", unsafe_allow_html=True)
-st.write("")
-st.write("")
-
+colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
 
@@ -1559,35 +1445,17 @@ average_ca_vetements = vetements_data['CA'].mean()
 
 average_age_vetements = vetements_data['ages'].mean()
 
-average_employee_vetements = vetements_data['employees_count'].mean()
-
 formatted_number_vetements = f"{number_of_rows_vetements:,.0f}".replace(",", " ")
 
-col1, col2, fatigue = st.columns(3)
-with col1:
-    st.metric(label="Nombre d'enregistrements (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=formatted_number_vetements)
-with col2:
-    st.metric(label="Moyenne d'Âge (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{average_age_vetements:,.1f} ans")
-with fatigue:
-    st.metric(label="Nombre d'employés moyen (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{average_employee_vetements:,.1f}")
+category_counts = vetements_data["genre"].value_counts()
 
-
-col3, col4, feh = st.columns(3)
-with col3:
-    st.metric(label="Chiffre d'Affaires Global (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{total_ca_vetements:,.0f} FCFA")
-with col4:
-    st.metric(label="Moyenne du Chiffre d'Affaires (VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE)", value=f"{average_ca_vetements:,.0f} FCFA")
-
+colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
 
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
 
-category_counts = vetements_data["genre"].value_counts()
 
-col03, col04 = st.columns(2)
-
-colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
 fig002 = px.pie(
     names=category_counts.index,
@@ -1596,39 +1464,12 @@ fig002 = px.pie(
     color_discrete_sequence=colors,
     title="REPARTITION PAR GENRE"
 )
-
-
 fig002.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col04:
-    st.plotly_chart(fig002)
-
-
-with col03:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    # Commentaire dynamique
-    commentaire = "La répartition par genre des vendeurs de vêtements/chaussures/accessoires de mode est la suivante :\n"
-    for genre, count in category_counts.items():
-        pourcentage = (count / category_counts.sum()) * 100
-        # Ajouter un séparateur de milliers avec un espace
-        commentaire += f"- **{genre}** : {'{:,.0f}'.format(count).replace(',', ' ')} ({pourcentage:.2f}%)\n"
-
-    st.write(commentaire)
-
+fig002.update_layout(showlegend=False, width=400, height=400)
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
 
 category_counts = vetements_data["tranche_age"].value_counts()
-
-col60, col61 = st.columns(2)
 
 fig70 = px.pie(
     names=category_counts.index,
@@ -1636,105 +1477,67 @@ fig70 = px.pie(
     hole=0.3,
     title="REPARTITION PAR TRANCHE D'AGE"
 )
-
-
 fig70.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col61:
-    st.plotly_chart(fig70)
-
-# Commentaire dynamique
-commentaire = "La répartition par tranche d'âge est la suivante :\n"
-for tranche_age, count in category_counts.items():
-    pourcentage = (count / category_counts.sum()) * 100
-    # Ajouter un séparateur de milliers avec un espace
-    commentaire += f"- **{pourcentage:.2f}%** des entreprenants interrogés, soit **{'{:,.0f}'.format(count).replace(',', ' ')}** ont **{tranche_age}**.\n"
-
-
-with col60:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write(commentaire)
-
+fig70.update_layout(showlegend=False, width=400, height=400)
 
 vetements_data = data[data["activity_sector"] == "VETEMENTS/CHAUSSURES/ACCESSOIRE DE MODE"]
-
 category_counts = vetements_data["stade_de_maturite"].value_counts()
+fig71 = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title=f"REPARTITION PAR STADE DE MATURITE"
+)
+fig71.update_traces(textinfo='none', hoverinfo='label+percent')
+fig71.update_layout(showlegend=False, width=400, height=400)
 
-col62, col63 = st.columns(2)
+col1, col2, fatigue = st.columns(3)
+with col1:
+    st.metric(label="Nombre d'enregistrements", value=formatted_number_vetements)
+    st.metric(label="Chiffre d'Affaires Global", value=f"{total_ca_vetements:,.0f} FCFA")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("La vente de vêtements, chaussures et accessoires de mode est pratiquée en majorité par des femmes.")
+    st.write("La plupart des vendeurs sont jeunes, c'est-à-dire ont moins de 40 ans.")
+    st.write("Les activités de ce secteurs ont tendance à être matures.")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.plotly_chart(fig71)
+with col2:
+    st.metric(label="Moyenne d'Âge", value=f"{average_age_vetements:,.1f} ans")
+    st.metric(label="Moyenne du Chiffre d'Affaires", value=f"{average_ca_vetements:,.0f} FCFA")
+    st.plotly_chart(fig002)
+    st.plotly_chart(fig70)
 
-with col63:
-    fig71 = px.pie(
-        names=category_counts.index,  # Catégories uniques
-        values=category_counts.values,  # Quantités associées à chaque catégorie
-        hole=0.3,  # Pour un donut chart (optionnel)
-        title=f"REPARTITION PAR STADE DE MATURITE"
+with fatigue:
+    st.markdown(
+    """
+    <div>
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/habitss.png" class="responsive-image-12">
+    </div>
+    """,
+    unsafe_allow_html=True
     )
 
-    fig71.update_traces(textinfo='none', hoverinfo='label+percent')
 
-    st.plotly_chart(fig71)
-
-# Placer le commentaire dans la colonne de gauche (col62)
-with col62:
-    # Ajouter des lignes vides
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
-
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
-
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction du stade de maturité est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .special-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #f5f5f5;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="special-box">
-        <h4>TOP 3 ACTIVITES : COUTURE</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Top 3 activité : Couture</h2>", unsafe_allow_html=True)
 
-# Version avec markdown (plus de contrôle sur le style)
-st.markdown("""
-    <div class="responsive-image-container">
-        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/tailleur.jpeg"
-             alt="Tailleur">
-    </div>
-""", unsafe_allow_html=True)
 
-st.write("")
-st.write("")
 
 
 produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
@@ -1747,31 +1550,9 @@ average_ca_produits_agricoles = produits_agricoles_data['CA'].mean()
 
 average_age_produits_agricoles = produits_agricoles_data['ages'].mean()
 
-average_employee_produits_agricoles = produits_agricoles_data['ages'].mean()
-
-col1, col2, tired = st.columns(3)
-with col1:
-    st.metric(label="Nombre d'enregistrements (COUTURE)", value=number_of_rows_produits_agricoles)
-with col2:
-    st.metric(label="Moyenne d'Âge (COUTURE)", value=f"{average_age_produits_agricoles:,.1f} ans")
-with tired:
-    st.metric(label="Nombre d'employés moyen (COUTURE)", value=f"{average_age_produits_agricoles:,.1f}")
-
-
-col3, col4, eeh = st.columns(3)
-with col3:
-    st.metric(label="Chiffre d'Affaires Global (COUTURE)", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
-with col4:
-    st.metric(label="Moyenne du Chiffre d'Affaires (COUTURE)", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
-
 produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
-
 data['genre'] = data['genre'].replace({'masculin': 'Masculin', 'feminin': 'Feminin'})
-
 category_counts = produits_agricoles_data["genre"].value_counts()
-
-col05, col06 = st.columns(2)
-
 colors = ['blue' if genre == 'Masculin' else 'red' for genre in category_counts.index]
 
 fig003 = px.pie(
@@ -1781,130 +1562,74 @@ fig003 = px.pie(
     color_discrete_sequence=colors,
     title="REPARTITION PAR GENRE"
 )
-
-
 fig003.update_traces(textinfo='none', hoverinfo='label+percent')
+fig003.update_layout(showlegend=False, width=400, height=400)
 
-with col06:
-    st.plotly_chart(fig003)
-
-
-with col05:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    # Commentaire dynamique
-    commentaire = "La répartition par genre des restaurateurs est la suivante :\n"
-    for genre, count in category_counts.items():
-        pourcentage = (count / category_counts.sum()) * 100
-        # Ajouter un séparateur de milliers avec un espace
-        commentaire += f"- **{genre}** : {'{:,.0f}'.format(count).replace(',', ' ')} ({pourcentage:.2f}%)\n"
-
-    st.write(commentaire)
-
-
-
-produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
-
+produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
 category_counts = produits_agricoles_data["tranche_age"].value_counts()
-
-col70, col71 = st.columns(2)
-
 fig72 = px.pie(
     names=category_counts.index,
     values=category_counts.values,
     hole=0.3,
     title="REPARTITION PAR TRANCHE D'AGE"
 )
-
-
 fig72.update_traces(textinfo='none', hoverinfo='label+percent')
+fig72.update_layout(showlegend=False, width=400, height=400)
 
-with col71:
+produits_agricoles_data = data[data["activity_sector"] == "COUTURE"]
+category_counts = produits_agricoles_data["stade_de_maturite"].value_counts()
+fig73 = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title=f"REPARTITION PAR STADE DE MATURITE"
+)
+fig73.update_traces(textinfo='none', hoverinfo='label+percent')
+fig73.update_layout(showlegend=False, width=400, height=400)
+
+
+col1, col2, tired = st.columns(3)
+with col2:
+    st.metric(label="Nombre d'enregistrements", value=number_of_rows_produits_agricoles)
+    st.metric(label="Chiffre d'Affaires Global", value=f"{total_ca_produits_agricoles:,.0f} FCFA")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("Contrairement aux autres principales activités, la couture est dominée par les hommes.")
+    st.write("Elle est exercée par les jeunes, et compte en grande partie des activités matures.")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.plotly_chart(fig73)
+with tired:
+    st.metric(label="Moyenne d'Âge", value=f"{average_age_produits_agricoles:,.1f} ans")
+    st.metric(label="Moyenne du Chiffre d'Affaires", value=f"{average_ca_produits_agricoles:,.0f} FCFA")
+    st.plotly_chart(fig003)
     st.plotly_chart(fig72)
 
-# Commentaire dynamique
-commentaire = "La répartition par tranche d'âge est la suivante :\n"
-for tranche_age, count in category_counts.items():
-    pourcentage = (count / category_counts.sum()) * 100
-    commentaire += f"- **{pourcentage:.2f}%** des entreprenants interrogés, soit **{count}** ont **{tranche_age}**.\n"
-
-with col70:
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write("")
-    st.write(commentaire)
-
-
-produits_agricoles_data = data[data["activity_sector"] == "RESTAURANT/MAQUIS/CAVE/BUVETTE"]
-
-category_counts = produits_agricoles_data["stade_de_maturite"].value_counts()
-
-col72, col73 = st.columns(2)
-
-with col73:
-    fig73 = px.pie(
-        names=category_counts.index,  # Catégories uniques
-        values=category_counts.values,  # Quantités associées à chaque catégorie
-        hole=0.3,  # Pour un donut chart (optionnel)
-        title=f"REPARTITION PAR STADE DE MATURITE"
+with col1:
+        st.markdown(
+    """
+    <div>
+        <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/tailleur.jpeg" class="responsive-image-13">
+    </div>
+    """,
+    unsafe_allow_html=True
     )
 
-    fig73.update_traces(textinfo='none', hoverinfo='label+percent')
 
-    st.plotly_chart(fig73)
 
-# Placer le commentaire dans la colonne de gauche (col72)
-with col72:
-    # Ajouter des lignes vides
-    st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-    # Générer un commentaire dynamique
-    if not category_counts.empty:
-        # Calculer le total pour le pourcentage
-        total = category_counts.sum()
 
-        # Créer un commentaire dynamique
-        comments = ["La répartition en fonction du stade de maturité est la suivante :"]
-        for category, count in category_counts.items():
-            percentage = (count / total) * 100
-            comments.append(f"**{category}** : {percentage:.2f}%")
-
-        # Afficher le commentaire avec un retour à la ligne
-        st.markdown("<br>".join(comments), unsafe_allow_html=True)
-    else:
-        st.write("Aucune donnée disponible pour afficher la répartition des stades de maturité.")
 
 
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    .special-box {
-        border-radius: 15px;
-        border: 1px solid #ccc;
-        padding: 15px;
-        background-color: #f5f5f5;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 15px;
-        margin-top: 40px;
-    }
-    </style>
-    <div class="special-box">
-        <h4>MAP DES ACTIVITES</h4>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown("<h2>Map des activités</h2>", unsafe_allow_html=True)
+
 
 st.markdown("""
     <iframe src="https://mafa-mapbox-v2.poc-demo.com/dashboard" width="100%" height="600"></iframe>

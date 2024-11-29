@@ -5,7 +5,7 @@ from io import BytesIO
 import requests
 
 # Charger les données contenant les URLs des images
-data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/NEW%20CONFIRMED2.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/rapportins/refs/heads/master/LESCONFIRMED.csv")
 
 st.set_page_config(layout="wide")
 
@@ -54,7 +54,7 @@ with st.container():
 
                 # Afficher l'image sans l'info-bulle
                 with cols[i]:
-                    st.image(img, use_column_width=True, caption=photo_id)  # Aucune légende ici
+                    st.image(img, use_container_width=True, caption=photo_id)  # Aucune légende ici
 
             except Exception as e:
                 st.write(f"Impossible de charger l'image : {e}")

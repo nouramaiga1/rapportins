@@ -114,12 +114,12 @@ st.markdown(
     }
         .responsive-image-3 {
         width: 100%;
-        height: 600px;
+        height: 500px;
         object-fit: cover;
     }
         .responsive-image-4 {
         width: 100%;
-        height: 800px;
+        height: 900px;
         object-fit: cover;
     }
         .responsive-image-5 {
@@ -138,7 +138,7 @@ st.markdown(
         object-fit: cover;
     }    .responsive-image-8 {
         width: 100%;
-        height: 1000px;
+        height: 900px;
         object-fit: cover;
     }
         .responsive-image-9 {
@@ -323,8 +323,8 @@ st.markdown("""
 )
 
 
-file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLASTLAST.csv"
-cols = ["commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type","type etal","type vivrier"]
+file_path = "https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/refs/heads/main/RECAPOCTLASTLAST2.csv"
+cols = ["commune", "activity_sector", "CA", "form", "size", "stade_de_maturite", "employees_count", "genre", "tranche_age", "ages","Entrepreneur identity_document_type","is_cnps_declared","terminal_type","type etal","type vivrier","tax_system"]
 
 @st.cache_data
 def load_data(file_path, sheet_name, cols):
@@ -418,8 +418,10 @@ st.markdown(
 habitudes = st.container()
 
 with habitudes:
-    st.markdown("<h2>Les habitudes de nos entreprenants</h2>", unsafe_allow_html=True)
-
+    st.markdown("<h2>LeES HABITUDES DE NOS ENTREPRENANTS</h2>", unsafe_allow_html=True)
+    st.write("")
+    st.write("")
+    st.write("")
     category_counts = data_filtree["Entrepreneur identity_document_type"].value_counts()
 
     data['Entrepreneur identity_document_type'] = data['Entrepreneur identity_document_type'].replace({'passeport': 'PASSEPORT'})
@@ -504,14 +506,130 @@ with habitudes:
 
     st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
+st.markdown("<h2>ZOOM SUR LES SECTEURS D'ACTIVITE</h2>", unsafe_allow_html=True)
+st.write("")
+st.write("")
+st.write("")
+
+st.markdown("<h3>Plus de commerces que de services enregistrés </h3>", unsafe_allow_html=True)
+st.write("")
+
+category_counts = data_filtree["form"].value_counts()
+
+col45, col46 = st.columns(2)
+
+fig2 = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title="REPARTITON PAR FORME D'ACTIVITE"
+)
+
+fig2.update_traces(textinfo='none', hoverinfo='label+percent')
+
+with col45:
+    fig2disp = st.container(border=True)
+    with fig2disp:
+        st.plotly_chart(fig2)
+        if not category_counts.empty:
+            # Calculer le total pour le pourcentage
+            total = category_counts.sum()
+
+            # Créer un commentaire dynamique
+            comments = []
+            for category, count in category_counts.items():
+                percentage = (count / total) * 100
+                comments.append(f"Les **{category}s** sont représentés à **{percentage:.2f}%**")
+
+            # Afficher le commentaire avec un retour à la ligne
+            commentaire = " et ".join(comments)
+            st.markdown(commentaire)
+        else:
+            st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
+
+
+with col46:
+    st.write("")
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/replace.png" class="responsive-image-3">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.write("")
+st.write("")
+st.write("")
+st.markdown("<h3>Types de taxe</h3>", unsafe_allow_html=True)
+st.write("")
+
+data["tax_system"] = data["tax_system"].str.upper()
+
+category_counts = data_filtree["tax_system"].value_counts()
+
+
+kol45, kol46 = st.columns(2)
+
+figy = px.pie(
+    names=category_counts.index,  # Catégories uniques
+    values=category_counts.values,  # Quantités associées à chaque catégorie
+    hole=0.3,  # Pour un donut chart (optionnel)
+    title="REPARTITON PAR TYPE DE TAXE"
+)
+
+figy.update_traces(textinfo='none', hoverinfo='label+percent')
+
+with kol46:
+    fig2disp = st.container(border=True)
+    with fig2disp:
+        st.plotly_chart(figy)
+        if not category_counts.empty:
+            # Calculer le total pour le pourcentage
+            total = category_counts.sum()
+
+            # Créer un commentaire dynamique
+            comments = []
+            for category, count in category_counts.items():
+                percentage = (count / total) * 100
+                comments.append(f"**{percentage:.2f}%** d'entreprenants payent la **{category}**")
+
+            # Afficher le commentaire avec un retour à la ligne
+            commentaire = " et ".join(comments)
+            st.markdown(commentaire)
+        else:
+            st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
+
+
+
+with kol45:
+    st.write("")
+    st.markdown(
+        """
+        <div>
+            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/FRANC.png" class="responsive-image-3">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+
+
+
 
 
 secteurs = st.container()
 
 with secteurs :
 
-    st.markdown("<h2>Une multitude de secteurs d'activité</h2>", unsafe_allow_html=True)
-
+    st.write("")
+    st.write("")
+    st.write("")
+    st.markdown("<h3>Différents secteurs d'activité</h3>", unsafe_allow_html=True)
+    st.write("")
     # Use Streamlit's Native `st.container`
 
     var1, var2, var3 = st.columns([1.5, 1, 1])
@@ -577,7 +695,7 @@ with secteurs :
          st.markdown(
             """
             <div>
-                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/marchegeneral.png" class="responsive-image-1">
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/rep.jpg" class="responsive-image-1">
             </div>
             """,
             unsafe_allow_html=True
@@ -588,10 +706,13 @@ with secteurs :
 
 
 
-    st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.markdown("<h3>Stades de maturité des activités économiques</h3>", unsafe_allow_html=True)
+    st.write("")
 
-
-    st.markdown("<h2>Des activités pour la plupart matures</h2>", unsafe_allow_html=True)
 
     category_counts = data_filtree["stade_de_maturite"].value_counts()
 
@@ -601,7 +722,7 @@ with secteurs :
         st.markdown(
             """
             <div>
-                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/mcher.jpeg" class="responsive-image-2">
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/1512829556commerce4.jpg" class="responsive-image-2">
             </div>
             """,
             unsafe_allow_html=True
@@ -663,66 +784,12 @@ with secteurs :
                 st.plotly_chart(figplus)
 
 
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
-
-
-st.markdown("<h2>Une majorité de commerces</h2>", unsafe_allow_html=True)
-
-
-category_counts = data_filtree["form"].value_counts()
-
-col45, col46 = st.columns(2)
-
-fig2 = px.pie(
-    names=category_counts.index,  # Catégories uniques
-    values=category_counts.values,  # Quantités associées à chaque catégorie
-    hole=0.3,  # Pour un donut chart (optionnel)
-    title="REPARTITON PAR TYPE D'ACTIVITE"
-)
-
-fig2.update_traces(textinfo='none', hoverinfo='label+percent')
-
-with col46:
-    fig2disp = st.container(border=True)
-    with fig2disp:
-        st.plotly_chart(fig2)
-        if not category_counts.empty:
-            # Calculer le total pour le pourcentage
-            total = category_counts.sum()
-
-            # Créer un commentaire dynamique
-            comments = []
-            for category, count in category_counts.items():
-                percentage = (count / total) * 100
-                comments.append(f"Les **{category}s** sont représentés à **{percentage:.2f}%**")
-
-            # Afficher le commentaire avec un retour à la ligne
-            commentaire = " et ".join(comments)
-            st.markdown(commentaire)
-        else:
-            st.markdown("Aucune donnée disponible pour afficher la répartition des types d'activité.")
-
-
-
-with col45:
-
-    st.markdown(
-        """
-        <div>
-            <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/yaounde.jpeg" class="responsive-image-3">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
-
-
-
-st.markdown("<h2>Une majorité de très petites activités enregistrées</h2>", unsafe_allow_html=True)
-
+st.write("")
+st.write("")
+st.write("")
+st.write("")
+st.markdown("<h3>Différentes tailles d'activité</h3>", unsafe_allow_html=True)
+st.write("")
 
 
 category_counts = data_filtree["size"].value_counts()
@@ -857,16 +924,19 @@ with kol10:
          st.markdown(
             """
             <div>
-                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/marchegeneral.png" class="responsive-image-4">
+                <img src="https://raw.githubusercontent.com/nouramaiga1/Photos-rapport/main/replace.png" class="responsive-image-4">
             </div>
             """,
             unsafe_allow_html=True
         )
+st.write("")
+st.write("")
+st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
+st.write("")
+st.markdown("<h2>REPARTITION PAR GENRE : Plus de femmes que d'hommes interrogés</h2>", unsafe_allow_html=True)
+st.write("")
 
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
-
-st.markdown("<h2>Plus de femmes que d'hommes interrogés</h2>", unsafe_allow_html=True)
 
 kol12, kol13 = st.columns([1,2])
 
@@ -989,11 +1059,6 @@ with col52:
 
 
 
-
-
-
-st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
-
 st.markdown("<h2>Focus par genre</h2>", unsafe_allow_html=True)
 
 
@@ -1097,8 +1162,9 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 
-st.markdown("<h2>Des entreprenants jeunes</h2>", unsafe_allow_html=True)
-
+st.markdown("<h2>REPARITION PAR TRANCHE D'AGE : Des entreprenants jeunes</h2>", unsafe_allow_html=True)
+st.write("")
+st.write("")
 
 data['tranche_age'] = data['tranche_age']
 
@@ -1624,8 +1690,6 @@ with col1:
 
 
 
-
-
 st.markdown("<hr style='border: 2px solid #ddd;'>", unsafe_allow_html=True)
 
 st.markdown("<h2>Map des activités</h2>", unsafe_allow_html=True)
@@ -1633,4 +1697,6 @@ st.markdown("<h2>Map des activités</h2>", unsafe_allow_html=True)
 
 st.markdown("""
     <iframe src="https://mafa-mapbox-v2.poc-demo.com/dashboard" width="100%" height="600"></iframe>
-""", unsafe_allow_html=True)
+""",
+unsafe_allow_html=True
+)

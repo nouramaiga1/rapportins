@@ -56,6 +56,8 @@ st.write("")
 st.write("")
 
 
+
+
 # CSS pour la gestion responsive des images et colonnes
 st.markdown("""
     <style>
@@ -286,6 +288,8 @@ st.write("")
 st.write("")
 st.write("")
 st.write("")
+
+
 
 
 st.markdown("""

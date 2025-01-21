@@ -8,7 +8,7 @@ import requests
 
 
 # Charger les données contenant les URLs des images
-data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/pictures/refs/heads/main/bouakepictures1.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/pictures/refs/heads/main/bouakepictures2.csv")
 
 st.set_page_config(layout="wide")
 

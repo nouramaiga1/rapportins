@@ -57,7 +57,7 @@ with st.container():
 
                 # Afficher l'image avec IDU et validateur
                 with cols[i]:
-                    st.image(img, use_container_width=True, caption=f"IDU: {photo_id} | Validateur: {validator_email}")
+                    st.image(img, use_container_width=True, caption=f"{photo_id}")
 
             except Exception as e:
                 st.write(f"Impossible de charger l'image : {e}")

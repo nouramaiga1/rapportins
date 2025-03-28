@@ -5,7 +5,7 @@ from io import BytesIO
 import requests
 
 # Charger les données contenant les URLs des images
-data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/pictures/refs/heads/main/performanceiatreatment.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/nouramaiga1/pictures/refs/heads/main/performanceiatreatment2.csv")
 
 st.set_page_config(layout="wide")
 
